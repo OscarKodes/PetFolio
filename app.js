@@ -6,7 +6,8 @@ const express    = require("express"),
       mongoose   = require("mongoose"),
       Pet        = require("./models/pet"),
       Img        = require("./models/img"),
-      methodOverride = require("method-override");
+      methodOverride = require("method-override"),
+      seedDB     = require("./seed");
 
 // REQUIRE ROUTE MODULE FILES
 const petRoutes = require("./routes/pet");
@@ -22,7 +23,8 @@ mongoose.connect('mongodb://localhost:27017/petfolio',
 {useNewUrlParser: true, useFindAndModify: false});
 
 
-
+// SEED DATABASE WITH SAMPLE DATA
+seedDB();
 
 
 app.use("/pets", petRoutes);
