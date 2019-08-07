@@ -24,7 +24,7 @@ mongoose.connect('mongodb://localhost:27017/petfolio',
 
 
 // SEED DATABASE WITH SAMPLE DATA
-seedDB();
+// seedDB();
 
 
 app.use("/pets", petRoutes);
