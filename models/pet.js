@@ -6,10 +6,12 @@ const petSchema = new mongoose.Schema ({
   species: String,
   breed: String,
   info: String,
-  imgs: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Img"
-  }
+  imgs: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Img"
+    }
+  ]
 });
 
 module.exports = mongoose.model("Pet", petSchema);

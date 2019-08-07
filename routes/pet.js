@@ -1,5 +1,5 @@
 const express       = require("express"),
-      router        = express.Router(),
+      router        = express.Router({mergeParams: true}),
       Pet        = require("../models/pet"),
       Img        = require("../models/img");
 

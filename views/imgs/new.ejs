@@ -1,0 +1,11 @@
+<% include ../partials/header %>
+
+<h1>new img form page</h1>
+
+<form class="" action="/pets/<%= pet_id %>/imgs" method="post">
+  <input type="text" name="image" placeholder="Image" required>
+  <input type="text" name="caption" placeholder="Caption">
+  <button type="submit" name="button">Submit</button>
+</form>
+
+<% include ../partials/footer %>

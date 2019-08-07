@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost:27017/petfolio',
 
 
 app.use("/pets", petRoutes);
-app.use("/pets/:id/img", imgRoutes);
+app.use("/pets/:id/imgs", imgRoutes);
 app.use(indexRoutes);
 
 app.listen(3000, function(){

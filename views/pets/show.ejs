@@ -8,8 +8,17 @@
 <p><%= pet.breed %></p>
 <p><%= pet.info %></p>
 
+<hr>
 <a href="/pets/<%= pet._id %>/edit">EDIT</a>
 
+<hr>
+
+
+
+
+<a href="/pets/<%= pet._id %>/imgs/new">New Image</a>
+
+<hr>
 <a href="/pets">back to pets index page</a>
 
 <% include ../partials/footer %>
