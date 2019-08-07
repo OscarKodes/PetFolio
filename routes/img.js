@@ -78,20 +78,20 @@ router.put("/:img_id", function(req, res){
   });
 });
 
-// // DESTROY ROUTE
-// router.delete("/:id", function(req, res){
-//
-//   Img.findByIdAndDelete(req.params.id, function(err, deletedImg){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       console.log("Img deleted");
-//       console.log(deletedImg);
-//       res.redirect("/imgs");
-//     }
-//   })
-// });
+// DESTROY ROUTE
+router.delete("/:img_id", function(req, res){
+
+  Img.findByIdAndDelete(req.params.img_id, function(err, deletedImg){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      console.log("Img deleted");
+      console.log(deletedImg);
+      res.redirect("/pets/" + req.params.id);
+    }
+  });
+});
 
 
 

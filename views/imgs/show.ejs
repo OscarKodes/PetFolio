@@ -9,6 +9,12 @@
 
 <a href="/pets/<%= pet_id %>/imgs/<%= img._id %>/edit">EDIT</a>
 
+<form class=""
+  action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=DELETE"
+  method="post">
+  <button class="btn btn-danger" type="submit" name="button">DELETE</button>
+</form>
+
 <hr>
 
 <a href="/pets/<%= pet_id %>">Back to Pet</a>
