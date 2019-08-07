@@ -5,6 +5,7 @@ const express    = require("express"),
       ejs        = require("ejs"),
       mongoose   = require("mongoose"),
       Pet        = require("./models/pet"),
+      Img        = require("./models/img"),
       methodOverride = require("method-override");
 
 app.set("view engine", "ejs");
