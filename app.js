@@ -102,6 +102,19 @@ app.put("/pets/:id", function(req, res){
 });
 
 // DESTROY ROUTE
+app.delete("/pets/:id", function(req, res){
+
+  Pet.findByIdAndDelete(req.params.id, function(err, deletedPet){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      console.log("Pet deleted");
+      console.log(deletedPet);
+      res.redirect("/pets");
+    }
+  })
+});
 
 
 

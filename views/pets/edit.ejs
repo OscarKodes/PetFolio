@@ -1,3 +1,5 @@
+<% include ../partials/header %>
+
 <h1>edit pet form page</h1>
 
 <form class="" action="/pets/<%= pet._id %>?_method=PUT" method="post">
@@ -8,3 +10,12 @@
   <input type="text" name="pet[info]" value="<%= pet.info %>">
   <button type="submit" name="button">Submit</button>
 </form>
+
+<!-- delete -->
+<form class="" action="/pets/<%= pet._id %>?_method=DELETE" method="post">
+  <button class="btn btn-outline-danger" type="submit" name="button">
+    DELETE
+  </button>
+</form>
+
+<% include ../partials/footer %>
