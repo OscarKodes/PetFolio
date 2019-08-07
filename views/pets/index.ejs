@@ -1,7 +1,7 @@
 <h1>pets index route success</h1>
 
 <% pets.forEach(function(pet){ %>
-  <p><%= pet.name %></p>
+  <a href="/pets/<%= pet._id %>"><%= pet.name %></a>
   <p><%= pet.species %></p>
   <p><%= pet.gender %></p>
   <p><%= pet.breed %></p>

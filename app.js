@@ -59,7 +59,20 @@ app.post("/pets", function(req, res){
   });
 });
 
+// SHOW ROUTE
+app.get("/pets/:id", function(req, res){
+  Pet.findById(req.params.id, function(err, foundPet){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("pets/show", {pet: foundPet});
+    }
+  });
+});
+
 // EDIT ROUTE
+
 
 // UPDATE ROUTE
 
