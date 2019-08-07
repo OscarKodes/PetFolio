@@ -40,8 +40,24 @@ app.get("/pets", function(req, res){
 });
 
 // NEW ROUTE
+app.get("/pets/new", function(req, res){
+  res.render("pets/new");
+});
 
 // CREATE ROUTE
+app.post("/pets", function(req, res){
+
+  Pet.create(req.body.pet, function(err, newPet){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      console.log("New Pet Created.");
+      console.log(newPet);
+      res.redirect("/pets");
+    }
+  });
+});
 
 // EDIT ROUTE
 

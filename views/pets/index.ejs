@@ -2,7 +2,10 @@
 
 <% pets.forEach(function(pet){ %>
   <p><%= pet.name %></p>
-  <p><%= pet.animal %></p>
+  <p><%= pet.species %></p>
+  <p><%= pet.gender %></p>
   <p><%= pet.breed %></p>
   <p><%= pet.info %></p>
 <% }); %>
+
+<a href="/pets/new">Make new pet</a>
