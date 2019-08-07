@@ -11,8 +11,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.get("/", function(req, res){
+  res.redirect("/front");
+});
 
-  res.send("Helloooo");
+app.get("/front", function(req, res){
+  res.render("front");
 });
 
 app.listen(3000, function(){
