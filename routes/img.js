@@ -38,46 +38,46 @@ router.post("/", function(req, res){
   });
 });
 
-// // SHOW ROUTE
-// router.get("/:id", function(req, res){
-//   Img.findById(req.params.id, function(err, foundImg){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.render("imgs/show", {img: foundImg});
-//     }
-//   });
-// });
-//
-// // EDIT ROUTE
-// router.get("/:id/edit", function(req, res){
-//   Img.findById(req.params.id, function(err, foundImg){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.render("imgs/edit", {img: foundImg});
-//     }
-//   });
-// });
-//
-// // UPDATE ROUTE
-// router.put("/:id", function(req, res){
-//
-//   Img.findByIdAndUpdate(
-//     req.params.id,
-//     req.body.img,
-//     function(err, foundImg){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.redirect("/imgs/" + req.params.id);
-//     }
-//   });
-// });
-//
+// SHOW ROUTE
+router.get("/:img_id", function(req, res){
+  Img.findById(req.params.img_id, function(err, foundImg){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("imgs/show", {img: foundImg, pet_id: req.params.id});
+    }
+  });
+});
+
+// EDIT ROUTE
+router.get("/:img_id/edit", function(req, res){
+  Img.findById(req.params.img_id, function(err, foundImg){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("imgs/edit", {img: foundImg, pet_id: req.params.id});
+    }
+  });
+});
+
+// UPDATE ROUTE
+router.put("/:img_id", function(req, res){
+
+  Img.findByIdAndUpdate(
+    req.params.img_id,
+    req.body.img,
+    function(err, foundImg){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
+    }
+  });
+});
+
 // // DESTROY ROUTE
 // router.delete("/:id", function(req, res){
 //

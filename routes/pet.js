@@ -41,14 +41,17 @@ router.post("/", function(req, res){
 
 // SHOW ROUTE
 router.get("/:id", function(req, res){
-  Pet.findById(req.params.id, function(err, foundPet){
-    if (err) {
-      console.log(err);
-      res.redirect("back");
-    } else {
-      res.render("pets/show", {pet: foundPet});
-    }
-  });
+  Pet.
+    findById(req.params.id).
+    populate("imgs").
+    exec(function(err, foundPet){
+      if (err) {
+        console.log(err);
+        res.redirect("back");
+      } else {
+        res.render("pets/show", {pet: foundPet, imgs: foundPet.imgs});
+      }
+    });
 });
 
 // EDIT ROUTE

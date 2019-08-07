@@ -1,0 +1,16 @@
+<% include ../partials/header %>
+
+<h1>IMG SHOW PAGE</h1>
+
+<img src="<%= img.image %>" alt="">
+<p><%= img.caption %></p>
+
+<hr>
+
+<a href="/pets/<%= pet_id %>/imgs/<%= img._id %>/edit">EDIT</a>
+
+<hr>
+
+<a href="/pets/<%= pet_id %>">Back to Pet</a>
+
+<% include ../partials/footer %>

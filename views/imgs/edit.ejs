@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+<h1>edit img form page</h1>
+
+<form class=""
+  action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=PUT"
+  method="post">
+  <input type="text" name="img[image]" value="<%= img.image %>" required>
+  <input type="text" name="img[caption]" value="<%= img.caption %>">
+  <button type="submit" name="button">Submit</button>
+</form>
+
+<hr>
+<a href="/pets/<%= pet_id %>/imgs/<%= img._id %>">BACK TO IMG SHOW</a>
+
+<hr>
+<a href="/pets/<%= pet_id %>">BACK TO PET SHOW</a>
+
+<% include ../partials/footer %>

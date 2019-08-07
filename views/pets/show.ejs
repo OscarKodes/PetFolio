@@ -13,7 +13,14 @@
 
 <hr>
 
-
+<% imgs.forEach(function(img){ %>
+  <a href="/pets/<%= pet._id %>/imgs/<%= img._id %>">
+    <div class="border border-rounded p-2">
+      <img src="<%= img.image %>" alt="">
+      <p><%= img.caption %></p>
+    </div>
+  </a>
+<% }) %>
 
 
 <a href="/pets/<%= pet._id %>/imgs/new">New Image</a>
