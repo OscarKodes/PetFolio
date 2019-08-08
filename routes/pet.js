@@ -1,7 +1,8 @@
 const express       = require("express"),
       router        = express.Router({mergeParams: true}),
       Pet        = require("../models/pet"),
-      Img        = require("../models/img");
+      Img        = require("../models/img"),
+      User          = require("../models/user");
 
 
 // PET RESTFUL ROUTES=====================================
@@ -20,21 +21,33 @@ router.get("/", function(req, res){
 });
 
 // NEW ROUTE
-router.get("/new", function(req, res){
+router.get("/new", isLoggedIn, function(req, res){
   res.render("pets/new");
 });
 
 // CREATE ROUTE
-router.post("/", function(req, res){
+router.post("/", isLoggedIn, function(req, res){
 
-  Pet.create(req.body.pet, function(err, newPet){
+  let petObj = req.body.pet;
+
+  User.findById(req.body.user_id, function(err, foundUser){
     if (err) {
       console.log(err);
-      res.redirect("back");
+      res.redirect("back")
     } else {
-      console.log("New Pet Created.");
-      console.log(newPet);
-      res.redirect("/pets");
+      petObj.user = req.body.user_id;
+      Pet.create(petObj, function(err, newPet){
+        if (err) {
+          console.log(err);
+          res.redirect("back");
+        } else {
+          foundUser.pets.push(newPet._id);
+          foundUser.save();
+          console.log("New Pet Created.");
+          console.log(foundUser);
+          res.redirect("/pets");
+        }
+      });
     }
   });
 });
@@ -44,18 +57,24 @@ router.get("/:id", function(req, res){
   Pet.
     findById(req.params.id).
     populate("imgs").
+    populate("user").
     exec(function(err, foundPet){
       if (err) {
         console.log(err);
         res.redirect("back");
       } else {
-        res.render("pets/show", {pet: foundPet, imgs: foundPet.imgs});
+        res.render("pets/show",
+        {
+          pet: foundPet,
+          imgs: foundPet.imgs,
+          user: foundPet.user
+        });
       }
     });
 });
 
 // EDIT ROUTE
-router.get("/:id/edit", function(req, res){
+router.get("/:id/edit", isLoggedIn, function(req, res){
   Pet.findById(req.params.id, function(err, foundPet){
     if (err) {
       console.log(err);
@@ -67,7 +86,7 @@ router.get("/:id/edit", function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", function(req, res){
+router.put("/:id", isLoggedIn, function(req, res){
 
   Pet.findByIdAndUpdate(
     req.params.id,
@@ -83,7 +102,7 @@ router.put("/:id", function(req, res){
 });
 
 // DESTROY ROUTE
-router.delete("/:id", function(req, res){
+router.delete("/:id", isLoggedIn, function(req, res){
 
   Pet.findByIdAndDelete(req.params.id, function(err, deletedPet){
     if (err) {
@@ -97,7 +116,14 @@ router.delete("/:id", function(req, res){
   })
 });
 
+// MIDDLEWARE FUNCTIONS
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
 
+    res.redirect("/login");
+}
 
 
 module.exports = router;

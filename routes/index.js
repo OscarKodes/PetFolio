@@ -13,7 +13,7 @@ router.get("/front", function(req, res){
 });
 
 // A page for testing user only pages
-router.get("/secrets", isLoggedIn,function(req, res){
+router.get("/secrets", isLoggedIn, function(req, res){
   res.render("secrets");
 });
 

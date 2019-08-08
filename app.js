@@ -49,6 +49,11 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+// this is middleware function that will run in every route
+app.use(function(req, res, next){
+  res.locals.currUser = req.user;
+  next();
+});
 
 
 mongoose.connect('mongodb://localhost:27017/petfolio',

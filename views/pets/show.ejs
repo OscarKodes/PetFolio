@@ -8,6 +8,14 @@
 <p><%= pet.breed %></p>
 <p><%= pet.info %></p>
 
+<h2>Owner: 
+  <% if (user.name) { %>
+    <%= user.name %>
+  <% } else { %>
+    <%= user.username %>
+  <% } %>
+</h2>
+
 <hr>
 <a href="/pets/<%= pet._id %>/edit">EDIT</a>
 

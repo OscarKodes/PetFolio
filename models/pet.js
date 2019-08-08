@@ -11,7 +11,11 @@ const petSchema = new mongoose.Schema ({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Img"
     }
-  ]
+  ],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 
 module.exports = mongoose.model("Pet", petSchema);

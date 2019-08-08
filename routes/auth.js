@@ -12,7 +12,10 @@ passport.use(new GoogleStrategy({
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({
+      googleId: profile.id,
+      name: profile.name.givenName
+     }, function (err, user) {
       return cb(err, user);
     });
   }
@@ -24,7 +27,12 @@ passport.use(new FacebookStrategy({
     callbackURL: process.env.FACEBOOK_CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    let name = profile.displayName;
+    let firstName = name.split(" ")[0];
+    User.findOrCreate({
+      facebookId: profile.id,
+      name: firstName
+     }, function (err, user) {
       return cb(err, user);
     });
   }
