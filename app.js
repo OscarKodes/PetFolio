@@ -15,6 +15,7 @@ passport      = require("passport"),
 passportLocalMongoose = require("passport-local-mongoose"),
 GoogleStrategy = require("passport-google-oauth20").Strategy,
 FacebookStrategy = require("passport-facebook").Strategy,
+middleware    = require("./middleware"),
 findOrCreate  = require("mongoose-findorcreate");
 
 // REQUIRE ROUTE MODULE FILES

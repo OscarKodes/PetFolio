@@ -1,5 +1,6 @@
 const express       = require("express"),
       router        = express.Router({mergeParams: true}),
+      middleware    = require("../middleware"),
       Pet        = require("../models/pet"),
       Img        = require("../models/img"),
       User          = require("../models/user");
@@ -21,12 +22,12 @@ router.get("/", function(req, res){
 });
 
 // NEW ROUTE
-router.get("/new", isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
   res.render("pets/new");
 });
 
 // CREATE ROUTE
-router.post("/", isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
 
   let petObj = req.body.pet;
 
@@ -74,7 +75,7 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:id/edit", isLoggedIn, function(req, res){
+router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
   Pet.findById(req.params.id, function(err, foundPet){
     if (err) {
       console.log(err);
@@ -86,7 +87,7 @@ router.get("/:id/edit", isLoggedIn, function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", isLoggedIn, function(req, res){
+router.put("/:id", middleware.isLoggedIn, function(req, res){
 
   Pet.findByIdAndUpdate(
     req.params.id,
@@ -102,7 +103,7 @@ router.put("/:id", isLoggedIn, function(req, res){
 });
 
 // DESTROY ROUTE
-router.delete("/:id", isLoggedIn, function(req, res){
+router.delete("/:id", middleware.isLoggedIn, function(req, res){
 
   Pet.findByIdAndDelete(req.params.id, function(err, deletedPet){
     if (err) {
@@ -115,15 +116,6 @@ router.delete("/:id", isLoggedIn, function(req, res){
     }
   })
 });
-
-// MIDDLEWARE FUNCTIONS
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-
-    res.redirect("/login");
-}
 
 
 module.exports = router;

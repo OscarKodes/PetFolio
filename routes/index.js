@@ -1,5 +1,6 @@
 const express       = require("express"),
       router        = express.Router(),
+      middleware    = require("../middleware"),
       User          = require("../models/user"),
       passport      = require("passport");
 
@@ -13,7 +14,7 @@ router.get("/front", function(req, res){
 });
 
 // A page for testing user only pages
-router.get("/secrets", isLoggedIn, function(req, res){
+router.get("/secrets", middleware.isLoggedIn, function(req, res){
   res.render("secrets");
 });
 
@@ -59,14 +60,7 @@ router.get("/logout", function(req, res){
 });
 
 
-// MIDDLEWARE FUNCTIONS
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
 
-    res.redirect("/login");
-}
 
 
 
