@@ -1,4 +1,5 @@
 // REQUIREMENTS
+require('dotenv').config();
 const express = require("express"),
 app           = express(),
 bodyParser    = require("body-parser"),
@@ -6,6 +7,7 @@ ejs           = require("ejs"),
 mongoose      = require("mongoose"),
 Pet           = require("./models/pet"),
 Img           = require("./models/img"),
+User          = require("./models/user"),
 methodOverride = require("method-override"),
 seedDB        = require("./seed"),
 session       = require("express-session"),
@@ -24,8 +26,24 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 mongoose.connect('mongodb://localhost:27017/petfolio',
 {useNewUrlParser: true, useFindAndModify: false});
+mongoose.set("useCreateIndex", true);
 
 
 // SEED DATABASE WITH SAMPLE DATA
