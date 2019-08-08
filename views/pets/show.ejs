@@ -8,11 +8,13 @@
 <p><%= pet.breed %></p>
 <p><%= pet.info %></p>
 
-<h2>Owner: 
-  <% if (user.name) { %>
+<h2>Owner:
+  <% if (user && user.name) { %>
     <%= user.name %>
-  <% } else { %>
+  <% } else if (user && user.username) { %>
     <%= user.username %>
+  <% } else { %>
+    Samuel Oak
   <% } %>
 </h2>
 
