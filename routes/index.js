@@ -33,15 +33,24 @@ router.post("/register", function(req, res){
       res.redirect("back");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/secrets");
+        res.redirect("/pets");
       });
     }
   })
 });
 
+// Render login form
+router.get("/login", function(req, res){
+  res.render("login");
+});
 
-
-
+// Process Login
+router.post("/login", passport.authenticate("local",
+  {
+    successRedirect: "/pets",
+    failureRedirect: "/login"
+  }), function(req, res){
+});
 
 
 // MIDDLEWARE FUNCTIONS
