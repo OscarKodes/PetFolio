@@ -62,6 +62,7 @@ const imgArrArr = [catImgs, dogImgs, goldImgs];
 // DECLARE PETS ============================================
 const newPet1 = new Pet({
   name: "Nitrogen",
+  avatar: "https://pbs.twimg.com/media/D3Otj6kWsAAVQnX.jpg",
   gender: "Female",
   species: "Cat",
   breed: "Explosive",
@@ -70,6 +71,7 @@ const newPet1 = new Pet({
 
 const newPet2 = new Pet({
   name: "Pongo",
+  avatar: "https://pbs.twimg.com/media/Dg2QMMJWAAAyXU5.jpg",
   gender: "Male",
   species: "Dog",
   breed: "Dalmation",
@@ -78,6 +80,7 @@ const newPet2 = new Pet({
 
 const newPet3 = new Pet({
   name: "Binnie",
+  avatar: "https://pbs.twimg.com/media/D9_qNqvW4AIkEMZ.jpg",
   gender: "Male",
   species: "Dog",
   breed: "Retriever",

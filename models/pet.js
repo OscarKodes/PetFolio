@@ -6,6 +6,7 @@ const petSchema = new mongoose.Schema ({
   species: String,
   breed: String,
   info: String,
+  avatar: String,
   imgs: [
     {
       type: mongoose.Schema.Types.ObjectId,

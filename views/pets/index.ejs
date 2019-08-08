@@ -16,6 +16,7 @@
 
 <% pets.forEach(function(pet){ %>
   <a href="/pets/<%= pet._id %>"><%= pet.name %></a>
+  <img class="pet-img rounded-circle" src="<%= pet.avatar %>" alt="">
   <p><%= pet.species %></p>
   <p><%= pet.gender %></p>
   <p><%= pet.breed %></p>

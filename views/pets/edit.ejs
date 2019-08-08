@@ -4,6 +4,7 @@
 
 <form class="" action="/pets/<%= pet._id %>?_method=PUT" method="post">
   <input type="text" name="pet[name]" value="<%= pet.name %>">
+  <input type="text" name="pet[avatar]" value="<%= pet.avatar %>">
   <input type="text" name="pet[gender]" value="<%= pet.gender %>">
   <input type="text" name="pet[species]" value="<%= pet.species %>">
   <input type="text" name="pet[breed]" value="<%= pet.breed %>">
