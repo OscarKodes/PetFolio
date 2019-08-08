@@ -11,12 +11,12 @@ const express       = require("express"),
 //// THE PET SHOW ROUTE COUNTS AS AN INDEX ROUTE FOR IMGS
 
 // NEW ROUTE
-router.get("/new", middleware.isLoggedIn, function(req, res){
+router.get("/new", middleware.checkPetOwnership, function(req, res){
   res.render("imgs/new", {pet_id: req.params.id});
 });
 
 // CREATE ROUTE
-router.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", middleware.checkPetOwnership, function(req, res){
 
   Img.create(req.body.img, function(err, newImg){
     if (err) {
@@ -52,7 +52,7 @@ router.get("/:img_id", function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:img_id/edit", middleware.isLoggedIn, function(req, res){
+router.get("/:img_id/edit", middleware.checkPetOwnership, function(req, res){
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
       console.log(err);
@@ -64,7 +64,7 @@ router.get("/:img_id/edit", middleware.isLoggedIn, function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:img_id", middleware.isLoggedIn, function(req, res){
+router.put("/:img_id", middleware.checkPetOwnership, function(req, res){
 
   Img.findByIdAndUpdate(
     req.params.img_id,
@@ -80,7 +80,7 @@ router.put("/:img_id", middleware.isLoggedIn, function(req, res){
 });
 
 // DESTROY ROUTE
-router.delete("/:img_id", middleware.isLoggedIn, function(req, res){
+router.delete("/:img_id", middleware.checkPetOwnership, function(req, res){
 
   Img.findByIdAndDelete(req.params.img_id, function(err, deletedImg){
     if (err) {

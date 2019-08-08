@@ -75,7 +75,7 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
+router.get("/:id/edit", middleware.checkPetOwnership, function(req, res){
   Pet.findById(req.params.id, function(err, foundPet){
     if (err) {
       console.log(err);
@@ -87,7 +87,7 @@ router.get("/:id/edit", middleware.isLoggedIn, function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", middleware.isLoggedIn, function(req, res){
+router.put("/:id", middleware.checkPetOwnership, function(req, res){
 
   Pet.findByIdAndUpdate(
     req.params.id,
@@ -103,7 +103,7 @@ router.put("/:id", middleware.isLoggedIn, function(req, res){
 });
 
 // DESTROY ROUTE
-router.delete("/:id", middleware.isLoggedIn, function(req, res){
+router.delete("/:id", middleware.checkPetOwnership, function(req, res){
 
   Pet.findByIdAndDelete(req.params.id, function(err, deletedPet){
     if (err) {
