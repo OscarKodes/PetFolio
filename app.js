@@ -1,13 +1,18 @@
 // REQUIREMENTS
-const express    = require("express"),
-      app        = express(),
-      bodyParser = require("body-parser"),
-      ejs        = require("ejs"),
-      mongoose   = require("mongoose"),
-      Pet        = require("./models/pet"),
-      Img        = require("./models/img"),
-      methodOverride = require("method-override"),
-      seedDB     = require("./seed");
+const express = require("express"),
+app           = express(),
+bodyParser    = require("body-parser"),
+ejs           = require("ejs"),
+mongoose      = require("mongoose"),
+Pet           = require("./models/pet"),
+Img           = require("./models/img"),
+methodOverride = require("method-override"),
+seedDB        = require("./seed"),
+session       = require("express-session"),
+passport      = require("passport"),
+passportLocalMongoose = require("passport-local-mongoose"),
+GoogleStrategy = require("passport-google-oauth20").Strategy,
+findOrCreate  = require("mongoose-findorcreate");
 
 // REQUIRE ROUTE MODULE FILES
 const petRoutes = require("./routes/pet");
