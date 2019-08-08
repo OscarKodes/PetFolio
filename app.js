@@ -20,6 +20,7 @@ findOrCreate  = require("mongoose-findorcreate");
 const petRoutes = require("./routes/pet");
 const imgRoutes = require("./routes/img");
 const indexRoutes = require("./routes/index");
+const authRoutes = require("./routes/auth");
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -37,8 +38,16 @@ app.use(passport.session());
 
 passport.use(User.createStrategy());
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 
 
 mongoose.connect('mongodb://localhost:27017/petfolio',
@@ -52,6 +61,7 @@ mongoose.set("useCreateIndex", true);
 
 app.use("/pets", petRoutes);
 app.use("/pets/:id/imgs", imgRoutes);
+app.use("/auth", authRoutes);
 app.use(indexRoutes);
 
 app.listen(3000, function(){
