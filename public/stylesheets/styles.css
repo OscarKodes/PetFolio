@@ -1,3 +1,110 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  box-sizing: border-box;
+}
+
+.front {
+  height: 100vh;
+  background-image:
+    linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, .7)),
+    url(../images/cat-grass.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.front-text-container {
+  position: absolute;
+  top: 35%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.front-text-main {
+  display: block;
+  font-size: 10rem;
+  font-weight: 700;
+  animation: moveInLeft 1s ease-out;
+}
+
+.front-text-sub {
+  text-transform: uppercase;
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 400;
+  letter-spacing: .5rem;
+  opacity: 0.7;
+  margin: 2rem 0 3.5rem 0;
+  animation: moveInRight 1s ease-out;
+}
+
+.front-btn {
+  padding: 2rem 10rem;
+  font-size: 2.5rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  display: inline-block;
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards;
+}
+
+/* Animations */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 0.7;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+
+/* Temporary Class */
 .pet-img {
   width: 10%;
 }
