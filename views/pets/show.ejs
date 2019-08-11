@@ -1,42 +1,56 @@
 <% include ../partials/header %>
 
-<h1>PET SHOW PAGE</h1>
+<div class="pet-show-avatar-container text-center my-4">
+  <img class="pet-show-avatar" src="<%= pet.avatar %>" alt="">
+</div>
 
-<p><%= pet.name %></p>
-<img class="pet-img rounded-circle" src="<%= pet.avatar %>" alt="">
-<p><%= pet.gender %></p>
-<p><%= pet.species %></p>
-<p><%= pet.breed %></p>
-<p><%= pet.info %></p>
-
-<h2>Owner:
-  <% if (user && user.name) { %>
-    <%= user.name %>
-  <% } else if (user && user.username) { %>
-    <%= user.username %>
-  <% } else { %>
-    Samuel Oak
+<div class="container pet-show-info text-center">
+  <!-- Edit Button -->
+  <% if (currUser && user && user._id.equals(currUser._id)) { %>
+    <a class="btn btn-warning" href="/pets/<%= pet._id %>/edit">EDIT</a>
   <% } %>
-</h2>
 
-<hr>
-<a href="/pets/<%= pet._id %>/edit">EDIT</a>
+  <p class="display-4"><%= pet.name %></p>
+  <p>Gender: <%= pet.gender %></p>
+  <p>Species: <%= pet.species %></p>
+  <p>Breed: <%= pet.breed %></p>
+  <p>Info: <%= pet.info %></p>
+  <p>Owner:
+    <% if (user && user.name) { %>
+      <%= user.name %>
+    <% } else if (user && user.username) { %>
+      <%= user.username %>
+    <% } else { %>
+      Samuel Oak
+    <% } %>
+  </p>
+</div>
 
-<hr>
-
-<% imgs.forEach(function(img){ %>
-  <a href="/pets/<%= pet._id %>/imgs/<%= img._id %>">
-    <div class="border border-rounded p-2">
-      <img class="pet-img" src="<%= img.image %>" alt="">
-      <p><%= img.caption %></p>
-    </div>
-  </a>
-<% }) %>
+<% if (currUser && user && user._id.equals(currUser._id)) { %>
+  <div class="text-center">
+    <a class="btn btn-lg btn-success" href="/pets/<%= pet._id %>/imgs/new">Add Image</a>
+  </div>
+<% } %>
 
 
-<a href="/pets/<%= pet._id %>/imgs/new">New Image</a>
+<div class="show-pet-images-container">
 
-<hr>
+  <div class="d-flex flex-row flex-wrap mt-5">
+      <% imgs.forEach(function(img){ %>
+        <div class="pet-card">
+          <a href="/pets/<%= pet._id %>/imgs/<%= img._id %>">
+              <img class="pet-card-img" src="<%= img.image %>" alt="">
+              <p class="pet-card-text"><%= img.caption %></p>
+          </a>
+        </div>
+
+      <% }) %>
+  </div>
+
+</div>
+
+
+
 <a href="/pets">back to pets index page</a>
 
 <% include ../partials/footer %>
