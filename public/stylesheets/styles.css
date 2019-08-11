@@ -19,6 +19,16 @@ body {
 }
 
 /* NAVBAR CLASSES */
+.navbar-toggler-icon {
+  font-size: 3rem;
+  border-width: 0;
+}
+
+.navbar-brand {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
 #register-form, #login-form {
   position: absolute;
   left: 0;
@@ -98,6 +108,58 @@ body {
   animation-fill-mode: backwards;
 }
 
+/* PET INDEX PAGE CLASSES */
+
+.btn-lg {
+  font-size: 1.5rem;
+  padding: .8rem 1.6rem;
+}
+
+.pet-container {
+  margin: 3rem 5%;
+}
+
+/* PET CARD CLASSES */
+.pet-card {
+  width: 30%;
+  margin: 1.5rem 1.5%;
+  border: 0.1rem solid darkgrey;
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+
+.pet-card-name {
+  color: #333333;
+  font-weight: bold;
+  font-size: 2.3rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.pet-card-text {
+  color: #333333;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.pet-card-img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+
+/* PET SHOW PAGE CLASSES */
+.pet-show-avatar {
+  width: 35rem;
+  height: 35rem;
+  object-fit: cover;
+  border-radius: 100%;
+  border: .1rem solid gray;
+  padding: .7rem;
+}
+
+
 /* Animations */
 @keyframes moveInLeft {
   0% {
@@ -132,24 +194,3 @@ body {
   100% {
     opacity: 1;
     transform: translate(0); } }
-
-/* PET INDEX PAGE CLASSES */
-
-.btn-lg {
-  font-size: 1.5rem;
-  padding: .8rem 1.6rem;
-}
-
-.pet-card-name {
-  color: #333333;
-  font-weight: bold;
-  font-size: 2.3rem;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.pet-card-img {
-  width: 100%;
-  height: 20rem;
-  object-fit: cover;
-}
