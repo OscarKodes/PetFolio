@@ -10,6 +10,8 @@
   <a class="btn btn-outline-dark btn-lg" href="/pets/new">Submit New Pet</a>
 </div>
 
+
+<!-- TABS -->
 <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new"
@@ -27,22 +29,20 @@
   <div class="tab-pane fade show active" id="new" role="tabpanel"
   aria-labelledby="new-tab">
 
-    <div class="">
       <div class="d-flex flex-row flex-wrap pet-container">
         <% pets.reverse().forEach(function(pet){ %>
 
               <div class="pet-card">
                 <a class="text-decoration-none" href="/pets/<%= pet._id %>">
                   <img class="pet-card-img" src="<%= pet.avatar %>" alt="...">
-                  <h5 class="pet-card-name">
+                  <p class="pet-card-name">
                     <%= pet.name %>
-                  </h5>
+                  </p>
                 </a>
               </div>
 
         <% }); %>
       </div>
-    </div>
 
   </div>
 
