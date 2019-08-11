@@ -28,24 +28,21 @@
   aria-labelledby="new-tab">
 
     <div class="">
-      <div class="d-flex flex-row flex-wrap mt-5 justify-content-center">
+      <div class="d-flex flex-row flex-wrap pet-container">
         <% pets.reverse().forEach(function(pet){ %>
 
-              <div class="border rounded p-3 mx-2 mb-3" style="width: 18rem;">
+              <div class="pet-card">
                 <a class="text-decoration-none" href="/pets/<%= pet._id %>">
-                  <img class="pet-card-img rounded" src="<%= pet.avatar %>" alt="...">
+                  <img class="pet-card-img" src="<%= pet.avatar %>" alt="...">
                   <h5 class="pet-card-name">
                     <%= pet.name %>
                   </h5>
                 </a>
               </div>
 
-
         <% }); %>
       </div>
     </div>
-
-
 
   </div>
 
@@ -54,6 +51,5 @@
   ...</div>
 
 </div>
-
 
 <% include ../partials/footer %>
