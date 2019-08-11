@@ -1,28 +1,59 @@
 <% include ../partials/header %>
 
-<a href="/register">Register</a>
+<header>
+  <h1 class="display-1 text-center my-4">
+    PetFolio
+  </h1>
+</header>
 
-<hr>
+<div class="text-center mb-4">
+  <a class="btn btn-outline-dark btn-lg" href="/pets/new">Submit New Pet</a>
+</div>
 
-<a href="/login">Login</a>
+<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new"
+    role="tab" aria-controls="new" aria-selected="true">New Pets</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="most-likes-tab" data-toggle="tab" href="#most-likes"
+    role="tab" aria-controls="most-likes" aria-selected="false">Most Likes</a>
+  </li>
 
-<hr>
-<a href="/secrets">Secrets</a>
+</ul>
+<div class="tab-content" id="myTabContent">
 
-<hr>
-<a href="/logout">Logout</a>
+  <!-- NEW TAB CONTENT -->
+  <div class="tab-pane fade show active" id="new" role="tabpanel"
+  aria-labelledby="new-tab">
 
-<h1>pets index route success</h1>
+    <div class="">
+      <div class="d-flex flex-row flex-wrap mt-5 justify-content-center">
+        <% pets.reverse().forEach(function(pet){ %>
 
-<% pets.forEach(function(pet){ %>
-  <a href="/pets/<%= pet._id %>"><%= pet.name %></a>
-  <img class="pet-img rounded-circle" src="<%= pet.avatar %>" alt="">
-  <p><%= pet.species %></p>
-  <p><%= pet.gender %></p>
-  <p><%= pet.breed %></p>
-  <p><%= pet.info %></p>
-<% }); %>
+              <div class="border rounded p-3 mx-2 mb-3" style="width: 18rem;">
+                <a class="text-decoration-none" href="/pets/<%= pet._id %>">
+                  <img class="pet-card-img rounded" src="<%= pet.avatar %>" alt="...">
+                  <h5 class="pet-card-name">
+                    <%= pet.name %>
+                  </h5>
+                </a>
+              </div>
 
-<a href="/pets/new">Make new pet</a>
+
+        <% }); %>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="tab-pane fade" id="most-likes" role="tabpanel"
+  aria-labelledby="most-likes-tab">
+  ...</div>
+
+</div>
+
 
 <% include ../partials/footer %>

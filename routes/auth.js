@@ -16,6 +16,7 @@ passport.use(new GoogleStrategy({
       googleId: profile.id,
       name: profile.name.givenName
      }, function (err, user) {
+       console.log(user);
       return cb(err, user);
     });
   }
@@ -27,6 +28,7 @@ passport.use(new FacebookStrategy({
     callbackURL: process.env.FACEBOOK_CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, cb) {
+    console.log(profile);
     let name = profile.displayName;
     let firstName = name.split(" ")[0];
     User.findOrCreate({
