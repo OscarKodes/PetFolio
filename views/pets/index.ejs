@@ -11,45 +11,27 @@
 </div>
 
 
-<!-- TABS -->
-<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new"
-    role="tab" aria-controls="new" aria-selected="true">New Pets</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="most-likes-tab" data-toggle="tab" href="#most-likes"
-    role="tab" aria-controls="most-likes" aria-selected="false">Most Likes</a>
-  </li>
+<!-- PET CLICK BLOCKS -->
+<div class="d-flex flex-row flex-wrap pet-container">
+  <% pets.reverse().forEach(function(pet){ %>
 
-</ul>
-<div class="tab-content" id="myTabContent">
+        <div class="pet-card">
+          <a class="text-decoration-none" href="/pets/<%= pet._id %>">
+            <img class="pet-card-img" src="<%= pet.avatar %>" alt="...">
+            <p class="pet-card-name">
+              <%= pet.name %>
+            </p>
+          </a>
+        </div>
 
-  <!-- NEW TAB CONTENT -->
-  <div class="tab-pane fade show active" id="new" role="tabpanel"
-  aria-labelledby="new-tab">
-
-      <div class="d-flex flex-row flex-wrap pet-container">
-        <% pets.reverse().forEach(function(pet){ %>
-
-              <div class="pet-card">
-                <a class="text-decoration-none" href="/pets/<%= pet._id %>">
-                  <img class="pet-card-img" src="<%= pet.avatar %>" alt="...">
-                  <p class="pet-card-name">
-                    <%= pet.name %>
-                  </p>
-                </a>
-              </div>
-
-        <% }); %>
-      </div>
-
-  </div>
-
-  <div class="tab-pane fade" id="most-likes" role="tabpanel"
-  aria-labelledby="most-likes-tab">
-  ...</div>
-
+  <% }); %>
 </div>
+
+
+
+
+
+
+
 
 <% include ../partials/footer %>
