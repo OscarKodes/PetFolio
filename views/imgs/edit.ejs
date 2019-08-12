@@ -1,19 +1,29 @@
 <% include ../partials/header %>
 
-<h1>edit img form page</h1>
+<h1 class="display-1 text-center form-title">Edit Image Post</h1>
 
 <form class=""
   action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=PUT"
   method="post">
-  <input type="text" name="img[image]" value="<%= img.image %>" required>
-  <input type="text" name="img[caption]" value="<%= img.caption %>">
-  <button type="submit" name="button">Submit</button>
+  <input class="form-control form-control-lg"
+  type="text" name="img[image]" value="<%= img.image %>" required>
+  <textarea class="form-control form-control-lg" name="img[caption]" required><%= img.caption %></textarea>
+  <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
 
-<hr>
-<a href="/pets/<%= pet_id %>/imgs/<%= img._id %>">BACK TO IMG SHOW</a>
+<div class="text-center">
+  <a class="nav-link" href="/pets/<%= pet_id %>/imgs/<%= img._id %>">Back to Image Post</a>
+</div>
 
-<hr>
-<a href="/pets/<%= pet_id %>">BACK TO PET SHOW</a>
+<div class="text-center">
+  <a class="nav-link" href="/pets/<%= pet_id %>">Back to Pet</a>
+</div>
+
+<form class="text-center mt-4"
+  action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=DELETE"
+  method="post">
+  <button class="btn btn-outline-danger" type="submit" name="button">DELETE</button>
+</form>
+
 
 <% include ../partials/footer %>

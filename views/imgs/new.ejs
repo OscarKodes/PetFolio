@@ -1,11 +1,12 @@
 <% include ../partials/header %>
 
-<h1>new img form page</h1>
+<h1 class="display-1 text-center form-title">Add Image</h1>
 
 <form class="" action="/pets/<%= pet_id %>/imgs" method="post">
-  <input type="text" name="img[image]" placeholder="Image" required>
-  <input type="text" name="img[caption]" placeholder="Caption">
-  <button type="submit" name="button">Submit</button>
+  <input class="form-control form-control-lg"
+  type="text" name="img[image]" placeholder="Image" required>
+  <textarea class="form-control form-control-lg" name="img[caption]" placeholder="Caption" required></textarea>
+  <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
 
 <% include ../partials/footer %>

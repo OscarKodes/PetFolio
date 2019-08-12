@@ -44,12 +44,6 @@
 <% if (currUser && pet.user && pet.user._id.equals(currUser._id)) { %>
   <div class="text-center">
     <a class="btn btn-warning" href="/pets/<%= pet._id %>/imgs/<%= img._id %>/edit">EDIT</a>
-
-    <form class=""
-      action="/pets/<%= pet._id %>/imgs/<%= img._id %>?_method=DELETE"
-      method="post">
-      <button class="btn btn-danger" type="submit" name="button">DELETE</button>
-    </form>
   </div>
 <% } %>
 
