@@ -1,0 +1,13 @@
+<% include partials/header %>
+
+<h1>
+  <% if (user.name) { %>
+    <%= user.name %>
+  <% } else if (user.username) { %>
+    <%= user.username %>
+  <% } else { %>
+    Samuel Oak
+  <% } %>
+</h1>
+
+<% include partials/footer %>

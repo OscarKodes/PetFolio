@@ -48,6 +48,16 @@ router.get("/logout", function(req, res){
   res.redirect("/pets");
 });
 
+// User's Profile Page
+router.get("/user/:user_id", middleware.isLoggedIn, function(req, res){
+
+  User.
+    findById(req.params.user_id).
+    populate("pets").
+    exec(function(err, foundUser){
+    res.render("user", {user: foundUser});
+  });
+});
 
 
 

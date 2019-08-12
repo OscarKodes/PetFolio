@@ -16,7 +16,7 @@
       <p>Breed: <%= pet.breed %></p>
       <p>Owner:
         <% if (user && user.name) { %>
-          <%= user.name %>
+          <a href="/user/<%=user._id%>"><%= user.name %></a>
         <% } else if (user && user.username) { %>
           <%= user.username %>
         <% } else { %>
