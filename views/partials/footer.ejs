@@ -3,16 +3,36 @@
 </div>
 
 <!-- BOTTOM NAVBAR -->
-<nav class="navbar navbar-light fixed-bottom">
+<nav class="navbar navbar-light fixed-bottom text-center pt-1">
 
-  <a class="nav-link mx-auto" href="/pets">Home</a>
+  <a class="nav-link mx-auto" href="/pets">
+    <i class="fas fa-home fa-2x"></i>
+    <br>
+    Home
+  </a>
 
   <% if (!currUser) { %>
-    <a id="register-btn" class="nav-link mx-auto" href="#">Register</a>
-    <a id="login-btn" class="nav-link mx-auto" href="#">Login</a>
+    <a id="register-btn" class="nav-link mx-auto" href="#">
+      <i class="fas fa-user-plus fa-2x"></i>
+      <br>
+      Register
+    </a>
+    <a id="login-btn" class="nav-link mx-auto" href="#">
+      <i class="fas fa-sign-in-alt fa-2x"></i>
+      <br>
+      Login
+    </a>
   <% } else { %>
-    <a class="nav-link mx-auto" href="/pets/new">Submit Pet</a>
-    <a class="nav-link mx-auto" href="/user/<%= currUser._id %>">Profile</a>
+    <a class="nav-link mx-auto" href="/pets/new">
+      <i class="fas fa-plus-circle fa-2x"></i>
+      <br>
+      Submit New
+    </a>
+    <a class="nav-link mx-auto" href="/user/<%= currUser._id %>">
+      <i class="fas fa-user fa-2x"></i>
+      <br>
+      Profile
+    </a>
   <% } %>
 
 </nav>
