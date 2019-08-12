@@ -107,7 +107,10 @@ function seedDB() {
               newPet.imgs.push(newImg);
               if (newPet.imgs.length === 3) {
                 newPet.save();
-                console.log(newPet);
+                console.log(newPet.name, "created");
+                if (index === 2) {
+                  makeUser();
+                }
               }
             }
           });
@@ -115,26 +118,37 @@ function seedDB() {
       }
     })
   });
-
-  newUser();
 }
 
-function newUser() {
+function makeUser() {
   Pet.find({}, function(err, allPets){
     User.create({
       name: "Samuel Oak",
-      pets: allPets
     }, function(err, newUser){
       if (err) {
         console.log(err);
       } else {
-        newUser.pets.forEach(function(pet){
-          pet.user = newUser;
-          pet.save();
-        });
+        newUser.pets = allPets;
+        console.log(newUser.name, "USER created");
+        givePetsUser(newUser);
       }
     });
   });
+}
+
+function givePetsUser(newUser) {
+  for (let i = 0; i < 3; i++) {
+    Pet.find({}, function(err, allPets){
+      if (err) {
+        console.log(err);
+      } else {
+        let currPet = allPets[i];
+        currPet.user = newUser;
+        currPet.save();
+        console.log(currPet);
+      }
+    })
+  }
 }
 
 
