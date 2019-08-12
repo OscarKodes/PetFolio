@@ -1,15 +1,15 @@
 <% include ../partials/header %>
 
-<h1>edit pet form page</h1>
+<h1 class="display-1 text-center">Edit Pet</h1>
 
 <form class="" action="/pets/<%= pet._id %>?_method=PUT" method="post">
-  <input type="text" name="pet[name]" value="<%= pet.name %>">
-  <input type="text" name="pet[avatar]" value="<%= pet.avatar %>">
-  <input type="text" name="pet[gender]" value="<%= pet.gender %>">
-  <input type="text" name="pet[species]" value="<%= pet.species %>">
-  <input type="text" name="pet[breed]" value="<%= pet.breed %>">
-  <input type="text" name="pet[info]" value="<%= pet.info %>">
-  <button type="submit" name="button">Submit</button>
+  <input class="form-control form-control-lg" type="text" name="pet[name]" value="<%= pet.name %>" placeholder="Pet's Name" required>
+  <input class="form-control form-control-lg" type="text" name="pet[avatar]" value="<%= pet.avatar %>" placeholder="Avatar" required>
+  <input class="form-control form-control-lg" type="text" name="pet[gender]" value="<%= pet.gender %>" placeholder="Gender">
+  <input class="form-control form-control-lg" type="text" name="pet[species]" value="<%= pet.species %>" placeholder="Species i.e. cat, dog, rabbit">
+  <input class="form-control form-control-lg" type="text" name="pet[breed]" value="<%= pet.breed %>" placeholder="Breed i.e. dalmatian, ragdoll">
+  <textarea class="form-control form-control-lg" type="text" name="pet[info]" value="" placeholder="Description"><%= pet.info %></textarea>
+  <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
 
 <!-- delete -->

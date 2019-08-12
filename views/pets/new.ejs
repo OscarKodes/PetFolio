@@ -1,16 +1,16 @@
 <% include ../partials/header %>
 
-<h1>new pet form page</h1>
+<h1 class="display-1 text-center">New Pet</h1>
 
 <form class="" action="/pets" method="post">
-  <input type="text" name="pet[name]" value="" placeholder="Pet's Name">
-  <input type="text" name="pet[avatar]" value="" placeholder="Avatar">
-  <input type="text" name="pet[gender]" value="" placeholder="Gender">
-  <input type="text" name="pet[species]" value="" placeholder="Species">
-  <input type="text" name="pet[breed]" value="" placeholder="Breed">
-  <input type="text" name="pet[info]" value="" placeholder="Info">
+  <input class="form-control form-control-lg" type="text" name="pet[name]" value="" placeholder="Pet's Name" required>
+  <input class="form-control form-control-lg" type="text" name="pet[avatar]" value="" placeholder="Avatar" required>
+  <input class="form-control form-control-lg" type="text" name="pet[gender]" value="" placeholder="Gender">
+  <input class="form-control form-control-lg" type="text" name="pet[species]" value="" placeholder="Species i.e. cat, dog, rabbit">
+  <input class="form-control form-control-lg" type="text" name="pet[breed]" value="" placeholder="Breed i.e. dalmatian, ragdoll">
+  <textarea class="form-control form-control-lg" name="pet[info]" placeholder="Description"></textarea>
   <input class="d-none" name="user_id" value="<%= currUser._id %>">
-  <button type="submit" name="button">Submit</button>
+  <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
 
 <% include ../partials/footer %>
