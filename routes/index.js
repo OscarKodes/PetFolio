@@ -13,11 +13,6 @@ router.get("/front", function(req, res){
   res.render("front");
 });
 
-// Render register form
-router.get("/register", function(req, res){
-  res.render("register");
-});
-
 // Process registration
 router.post("/register", function(req, res){
   User.register(
@@ -33,11 +28,6 @@ router.post("/register", function(req, res){
       });
     }
   })
-});
-
-// Render login form
-router.get("/login", function(req, res){
-  res.render("login");
 });
 
 // Process Login
