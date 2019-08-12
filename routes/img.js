@@ -46,7 +46,14 @@ router.get("/:img_id", function(req, res){
       console.log(err);
       res.redirect("back");
     } else {
-      res.render("imgs/show", {img: foundImg, pet_id: req.params.id});
+      Pet.findById(req.params.id, function(err, foundPet){
+        if (err){
+          console.log(err);
+          res.redirect("back");
+        } else {
+          res.render("imgs/show", {img: foundImg, pet: foundPet});
+        }
+      });
     }
   });
 });

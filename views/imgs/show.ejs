@@ -1,22 +1,56 @@
-<% include ../partials/header %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PetFolio</title>
 
-<h1>IMG SHOW PAGE</h1>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
-<img src="<%= img.image %>" alt="">
-<p><%= img.caption %></p>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<hr>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<a href="/pets/<%= pet_id %>/imgs/<%= img._id %>/edit">EDIT</a>
+    <!-- Local stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+  </head>
 
-<form class=""
-  action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=DELETE"
-  method="post">
-  <button class="btn btn-danger" type="submit" name="button">DELETE</button>
-</form>
+  <body>
 
-<hr>
+<!-- NAVBAR -->
+    <nav class="navbar navbar-light fixed-top">
+      <a class="nav-link h1 mt-2" href="/pets/<%= pet._id %>">
+        <i class="fas fa-caret-left mx-2"></i>
+        Back
+      </a>
 
-<a href="/pets/<%= pet_id %>">Back to Pet</a>
+      <a class="navbar-brand navbar-brand-center" href="/pets">PetFolio</a>
+    </nav>
+
+    <!-- SPACER NEEDED BECAUSE OF FIXED TOP -->
+    <div class="fixed-spacer">
+    </div>
+
+
+<!-- IMG LARGE -->
+<img class="show-img-image" src="<%= img.image %>" alt="">
+
+<p class="h2 text-center my-4"><%= img.caption %></p>
+
+
+<!-- User buttons -->
+<% if (currUser && pet.user && pet.user._id.equals(currUser._id)) { %>
+  <div class="text-center">
+    <a class="btn btn-warning" href="/pets/<%= pet._id %>/imgs/<%= img._id %>/edit">EDIT</a>
+
+    <form class=""
+      action="/pets/<%= pet._id %>/imgs/<%= img._id %>?_method=DELETE"
+      method="post">
+      <button class="btn btn-danger" type="submit" name="button">DELETE</button>
+    </form>
+  </div>
+<% } %>
 
 <% include ../partials/footer %>
