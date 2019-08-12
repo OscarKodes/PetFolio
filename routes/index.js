@@ -13,11 +13,6 @@ router.get("/front", function(req, res){
   res.render("front");
 });
 
-// A page for testing user only pages
-router.get("/secrets", middleware.isLoggedIn, function(req, res){
-  res.render("secrets");
-});
-
 // Render register form
 router.get("/register", function(req, res){
   res.render("register");
