@@ -13,6 +13,10 @@ router.get("/front", function(req, res){
   res.render("front");
 });
 
+router.get("/about", function(req, res){
+  res.render("about");
+});
+
 // Process registration
 router.post("/register", function(req, res){
   User.register(
