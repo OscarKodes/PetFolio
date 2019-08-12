@@ -1,4 +1,21 @@
+<!-- A SPACER FOR FIXED BOTTOM -->
+<div class="fixed-spacer">
+</div>
 
+<!-- BOTTOM NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-bottom">
+
+  <a class="nav-link mx-auto" href="/pets">Home</a>
+
+  <% if (!currUser) { %>
+    <a id="register-btn" class="nav-link mx-auto" href="#">Register</a>
+    <a id="login-btn" class="nav-link mx-auto" href="#">Login</a>
+  <% } else { %>
+    <a class="nav-link mx-auto" href="/pets/new">Submit Pet</a>
+    <a class="nav-link mx-auto" href="#">Profile</a>
+  <% } %>
+
+</nav>
 
 </body>
 
