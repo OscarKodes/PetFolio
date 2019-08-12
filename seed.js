@@ -129,6 +129,7 @@ function makeUser() {
         console.log(err);
       } else {
         newUser.pets = allPets;
+        newUser.save();
         console.log(newUser.name, "USER created");
         givePetsUser(newUser);
       }
