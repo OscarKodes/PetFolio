@@ -63,7 +63,7 @@ mongoose.set("useCreateIndex", true);
 
 
 // SEED DATABASE WITH SAMPLE DATA
-// seedDB();
+seedDB();
 
 
 app.use("/pets", petRoutes);

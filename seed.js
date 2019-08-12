@@ -1,5 +1,6 @@
 const mongoose   = require("mongoose"),
       Pet        = require("./models/pet"),
+      User       = require("./models/user"),
       Img        = require("./models/img");
 
 // CAT IMGS============================
@@ -113,7 +114,28 @@ function seedDB() {
         });
       }
     })
-  })
+  });
+
+  newUser();
 }
+
+function newUser() {
+  Pet.find({}, function(err, allPets){
+    User.create({
+      name: "Samuel Oak",
+      pets: allPets
+    }, function(err, newUser){
+      if (err) {
+        console.log(err);
+      } else {
+        newUser.pets.forEach(function(pet){
+          pet.user = newUser;
+          pet.save();
+        });
+      }
+    });
+  });
+}
+
 
 module.exports = seedDB;
