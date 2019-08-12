@@ -8,7 +8,7 @@
   <% } %>
 </h1>
 
-<div class="pet-container">
+<div class="d-flex flex-row flex-wrap pet-container">
   <% user.pets.forEach(function(pet){ %>
     <div class="pet-card">
       <a class="text-decoration-none" href="/pets/<%= pet._id %>">

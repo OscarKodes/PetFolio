@@ -173,6 +173,9 @@ body {
   font-size: 1.3rem;
   text-align: center;
   margin-top: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .pet-card-img {
