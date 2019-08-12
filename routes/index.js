@@ -49,7 +49,7 @@ router.get("/logout", function(req, res){
 });
 
 // User's Profile Page
-router.get("/user/:user_id", middleware.isLoggedIn, function(req, res){
+router.get("/user/:user_id", function(req, res){
 
   User.
     findById(req.params.user_id).

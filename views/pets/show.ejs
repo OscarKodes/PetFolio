@@ -17,10 +17,8 @@
       <p>Owner:
         <% if (user && user.name) { %>
           <a href="/user/<%=user._id%>"><%= user.name %></a>
-        <% } else if (user && user.username) { %>
-          <%= user.username %>
         <% } else { %>
-          Samuel Oak
+          <a href="/user/<%=user._id%>"><%= user.username %></a>
         <% } %>
       </p>
 
