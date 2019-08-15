@@ -59,6 +59,17 @@ router.get("/user/:user_id", function(req, res){
   });
 });
 
+// User's Select a pet route to create new image
+router.get("/user/:user_id/pet-select", middleware.isLoggedIn, function(req, res){
+
+  User.
+    findById(req.params.user_id).
+    populate("pets").
+    exec(function(err, foundUser){
+    res.render("pet-select", {user: foundUser});
+  });
+});
+
 
 
 

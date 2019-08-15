@@ -21,6 +21,7 @@ router.get("/", function(req, res){
   });
 });
 
+
 // NEW ROUTE
 router.get("/new", middleware.isLoggedIn, function(req, res){
   res.render("pets/new");

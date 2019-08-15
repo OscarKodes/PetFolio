@@ -12,7 +12,14 @@ const express       = require("express"),
 
 // NEW ROUTE
 router.get("/new", middleware.checkPetOwnership, function(req, res){
-  res.render("imgs/new", {pet_id: req.params.id});
+  Pet.findById(req.params.id, function(err, foundPet){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("imgs/new", {pet: foundPet});
+    }
+  });
 });
 
 // CREATE ROUTE
