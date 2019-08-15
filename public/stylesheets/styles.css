@@ -188,6 +188,13 @@ textarea.form-clean-wide {
   margin: 1.2rem 1.5%;
   padding: 0;
   background-color: black;
+  box-shadow: 0 .5rem 1rem 0 #222222;
+  border-width: 0;
+}
+
+.pet-container .pet-card:hover {
+  opacity: 0.8;
+  box-shadow: 0 1rem 1.5rem 0 #333333;
 }
 
 /* PET CARD CLASSES */
