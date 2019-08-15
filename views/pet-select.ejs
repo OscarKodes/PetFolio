@@ -1,0 +1,16 @@
+<%- include partials/header %>
+
+<h1 class="display-1 text-center">Pet Selection</h1>
+
+<% user.pets.reverse().forEach(function(pet){ %>
+
+  <a class="text-decoration-none" href="/pets/<%= pet._id %>/imgs/new">
+    <div class="pet-selection-card">
+      <p><%= pet.name %></p>
+    </div>
+  </a>
+
+
+<% }); %>
+
+<%- include partials/footer %>
