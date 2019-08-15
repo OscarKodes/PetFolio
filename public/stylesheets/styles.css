@@ -266,6 +266,39 @@ textarea.form-clean-wide {
 }
 
 
+/* USER PROFILE PAGE =========================== */
+.pet-long-card {
+  margin: 2rem 2rem 0 2rem;
+  background-color: #222222;
+  border-radius: 2rem;
+  box-shadow: 0 .5rem 1rem 0 #222222
+}
+
+.pet-long-card:hover {
+  opacity: 0.8;
+  box-shadow: 0 1rem 1.5rem 0 #333333
+}
+
+.pet-long-img {
+  width: 33vw;
+  height: 33vw;
+  object-fit: cover;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.pet-big-name {
+  color: white;
+  font-size: 5rem;
+  margin: auto;
+  padding: 0 2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+
 /* Animations */
 @keyframes moveInLeft {
   0% {

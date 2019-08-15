@@ -1,6 +1,6 @@
 <% include partials/header %>
 
-<h1 class="text-center">
+<h1 class="display-1 text-center mb-5 pb-2">
   <% if (user.name) { %>
     <%= user.name %>'s PetFolio
   <% } else { %>
@@ -8,7 +8,19 @@
   <% } %>
 </h1>
 
-<div class="d-flex flex-row flex-wrap pet-container">
+
+<% user.pets.forEach(function(pet){ %>
+  <a class="text-decoration-none" href="/pets/<%= pet._id %>">
+    <div class="d-flex flex-row pet-long-card">
+      <img class="pet-long-img" src="<%= pet.avatar %>" alt="">
+      <p class="pet-big-name"><%= pet.name %></p>
+    </div>
+  </a>
+
+<% }); %>
+
+
+<!-- <div class="d-flex flex-row flex-wrap pet-container">
   <% user.pets.forEach(function(pet){ %>
     <div class="pet-card">
       <a class="text-decoration-none" href="/pets/<%= pet._id %>">
@@ -18,6 +30,6 @@
     </div>
 
   <% }); %>
-</div>
+</div> -->
 
 <% include partials/footer %>
