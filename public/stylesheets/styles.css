@@ -81,6 +81,20 @@ body {
   color: grey;
 }
 
+.pet-selection-card {
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+  height: 8rem;
+  border-top: 0.5rem solid white;
+  background-color: #333333;
+}
+
+.pet-selection-card:hover {
+  background-color: #555555;
+}
+
 /* FRONT SPLASH PAGE CLASSES======================= */
 .front {
   height: 100vh;
