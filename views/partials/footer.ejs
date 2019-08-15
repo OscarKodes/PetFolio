@@ -24,9 +24,14 @@
     </a>
   <% } else { %>
     <a class="nav-link mx-auto" href="/pets/new">
+      <i class="fas fa-paw fa-2x"></i>
+      <br>
+      New Pet
+    </a>
+    <a class="nav-link mx-auto" href="/user/<%= currUser._id %>/pet-select">
       <i class="fas fa-plus-circle fa-2x"></i>
       <br>
-      Submit New
+      New Image
     </a>
     <a class="nav-link mx-auto" href="/user/<%= currUser._id %>">
       <i class="fas fa-user fa-2x"></i>
