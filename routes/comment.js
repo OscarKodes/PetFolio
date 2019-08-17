@@ -15,7 +15,7 @@ const express       = require("express"),
 //// This route is covered by the comment form on the show img page
 
 // Create Route
-router.post("/", function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
 
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
@@ -33,7 +33,7 @@ router.post("/", function(req, res){
 //// No need for show comments route
 
 // Edit Route
-router.get("/:comment_idx/edit", function(req, res){
+router.get("/:comment_idx/edit", middleware.checkCommentOwnership, function(req, res){
 
   let idx = req.params.comment_idx;
 
@@ -55,7 +55,7 @@ router.get("/:comment_idx/edit", function(req, res){
 });
 
 // Update Route
-router.put("/:comment_idx", function(req, res){
+router.put("/:comment_idx", middleware.checkCommentOwnership, function(req, res){
 
   let idx = req.params.comment_idx;
 
@@ -73,7 +73,7 @@ router.put("/:comment_idx", function(req, res){
 
 // Destroy Route
 
-router.delete("/:comment_idx", function(req, res){
+router.delete("/:comment_idx", middleware.checkCommentOwnership, function(req, res){
 
   let idx = req.params.comment_idx;
 

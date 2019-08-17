@@ -32,6 +32,33 @@ middlewareObj.checkPetOwnership = function(req, res, next) {
   }
 }
 
+middlewareObj.checkCommentOwnership = function(req, res, next) {
+
+  let idx = req.params.comment_idx;
+
+  // check if user is logged in
+  if (req.isAuthenticated()){
+
+    // search for the current pet with id
+    Img.findById(req.params.img_id, function(err, foundImg){
+      if (err) {
+        console.log("THERE WAS AN ERROR:", err);
+        res.redirect("back");
+      } else {
+
+        // does user own campground?
+        if (req.user._id.equals(foundImg.comments[idx].user_id)){
+          next();
+        } else {
+          res.redirect("back");
+        }
+      }
+    });
+  } else {
+    res.redirect("back");
+  }
+}
+
 
 middlewareObj.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated()) {
