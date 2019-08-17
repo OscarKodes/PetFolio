@@ -276,6 +276,48 @@ textarea.form-clean-wide {
   object-fit: cover;
 }
 
+.new-comment-container {
+  text-align: center;
+  margin: 3rem 3rem;
+}
+
+.comment-card-container {
+
+}
+
+.comment-card {
+  text-align: center;
+  padding-bottom: 4rem;
+  margin: 0 6rem;
+  box-shadow: 0 .5rem 1rem 0 #222222;
+}
+
+.comment-card:first-child,
+.comment-card:first-child .comment-by-line{
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.comment-card:last-child {
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.comment-by-line {
+  font-family: monospace;
+  color: white;
+  background-color: #303030;
+  padding: 1rem 0;
+}
+
+.comment-by-line a {
+  color: white;
+  text-decoration: underline;
+}
+
+.comment-by-line a:hover {
+  color: gold;
+}
 
 /* USER PROFILE PAGE =========================== */
 .pet-long-card {

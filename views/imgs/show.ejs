@@ -43,44 +43,60 @@
 <!-- User buttons -->
 <% if (currUser && pet.user && pet.user._id.equals(currUser._id)) { %>
   <div class="text-center">
-    <a class="btn btn-warning" href="/pets/<%= pet._id %>/imgs/<%= img._id %>/edit">EDIT</a>
+    <a class="btn btn-secondary" href="/pets/<%= pet._id %>/imgs/<%= img._id %>/edit">EDIT IMAGE POST</a>
   </div>
 <% } %>
 
 <!-- New Comment Form -->
 <% if (currUser) { %>
-  <h3>New Comment</h3>
-  <form class="mx-auto" action="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments" method="post">
-    <textarea name="comment[text]" rows="4" cols="30"></textarea>
-    <% let currUserName; %>
-    <% if (currUser.name) { %>
-      <% currUserName = currUser.name; %>
-    <% } else { %>
-      <% currUserName = currUser.username; %>
-    <% } %>
-    <input class="d-none" type="text" name="comment[user_name]" value="<%= currUserName %>">
-    <input class="d-none" type="text" name="comment[user_id]" value="<%= currUser._id %>">
-    <button type="submit" name="button">Submit</button>
-  </form>
+  <div class="new-comment-container">
+    <form class="mx-auto" action="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments" method="post">
+      <textarea class="form-control form-control-lg mb-4"
+        name="comment[text]" placeholder="Enter new comment here."
+        rows="4" cols="30" required></textarea>
+      <% let currUserName; %>
+      <% if (currUser.name) { %>
+        <% currUserName = currUser.name; %>
+      <% } else { %>
+        <% currUserName = currUser.username; %>
+      <% } %>
+      <input class="d-none" type="text" name="comment[user_name]" value="<%= currUserName %>">
+      <input class="d-none" type="text" name="comment[user_id]" value="<%= currUser._id %>">
+      <button class="btn btn-primary btn-lg" type="submit" name="button">
+        Submit Comment</button>
+    </form>
+  </div>
+
 <% } %>
 
 
 <!-- All Comments -->
-<% img.comments.forEach(function(comment, index){ %>
-  <p><%= comment.text %></p>
-  <a href="/user/<%= comment.user_id %>">
-    <p><%= comment.user_name %></p>
-  </a>
-  <p><%= comment.date.toDateString() %></p>
+<div class="comment-card-container">
+  <% img.comments.forEach(function(comment, index){ %>
+    <div class="comment-card">
+      <p class="comment-by-line">
+        <span class="date-text"><%= comment.date.toDateString() %></span>
+        comment by
+        <a href="/user/<%= comment.user_id %>">
+          <%= comment.user_name %>
+        </a>
+      </p>
+      <p>
+        <%= comment.text %>
+      </p>
 
-  <% if (currUser && currUser._id.equals(comment.user_id)){ %>
-    <a class="btn btn-warning"
-      href="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments/<%= index %>/edit">
-      Edit Comment
-    </a>
-  <% } %>
+      <!-- EDIT BUTTON -->
+      <% if (currUser && currUser._id.equals(comment.user_id)){ %>
+        <a class="btn btn-secondary"
+          href="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments/<%= index %>/edit">
+          Edit Comment
+        </a>
+      <% } %>
+    </div>
 
-<% }); %>
+  <% }); %>
+</div>
+
 
 
 
