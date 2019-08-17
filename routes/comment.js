@@ -17,17 +17,12 @@ const express       = require("express"),
 // Create Route
 router.post("/", function(req, res){
 
-  let newComment = {
-    text: req.body.text
-  }
-
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
       console.log(err);
       res.redirect("back");
     } else {
-      foundImg.comments.unshift(newComment);
-      foundImg.comments[0].user = req.params.id;
+      foundImg.comments.unshift(req.body.comment);
       foundImg.save();
       res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
     }

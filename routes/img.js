@@ -48,17 +48,21 @@ router.post("/", middleware.checkPetOwnership, function(req, res){
 
 // SHOW ROUTE
 router.get("/:img_id", function(req, res){
-  Img.findById(req.params.img_id, function(err, foundImg){
+  Img.
+    findById(req.params.img_id).
+    populate("comments[user]").
+    exec(function(err, foundImg){
     if (err) {
       console.log(err);
       res.redirect("back");
     } else {
+      console.log(foundImg);
       Pet.findById(req.params.id, function(err, foundPet){
         if (err){
           console.log(err);
           res.redirect("back");
         } else {
-          res.render("imgs/show", {img: foundImg, pet: foundPet});
+          res.render("imgs/show", {img: foundImg, pet: foundPet, });
         }
       });
     }

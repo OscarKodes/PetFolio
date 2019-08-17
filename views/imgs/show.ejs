@@ -48,14 +48,31 @@
 <% } %>
 
 <!-- New Comment Form -->
-<h3>New Comment</h3>
-<form class="mx-auto" action="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments" method="post">
-  <textarea name="text" rows="4" cols="30"></textarea>
-  <button type="submit" name="button">Submit</button>
-</form>
+<% if (currUser) { %>
+  <h3>New Comment</h3>
+  <form class="mx-auto" action="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments" method="post">
+    <textarea name="comment[text]" rows="4" cols="30"></textarea>
+    <% let currUserName; %>
+    <% if (currUser.name) { %>
+      <% currUserName = currUser.name; %>
+    <% } else { %>
+      <% currUserName = currUser.username; %>
+    <% } %>
+    <input class="d-none" type="text" name="comment[user_name]" value="<%= currUserName %>">
+    <input class="d-none" type="text" name="comment[user_id]" value="<%= currUser._id %>">
+    <button type="submit" name="button">Submit</button>
+  </form>
+<% } %>
 
 
-
+<!-- All Comments -->
+<% img.comments.forEach(function(comment){ %>
+  <p><%= comment.text %></p>
+  <a href="/user/<%= comment.user_id %>">
+    <p><%= comment.user_name %></p>
+  </a>
+  <p><%= comment.date.toDateString() %></p>
+<% }); %>
 
 
 
