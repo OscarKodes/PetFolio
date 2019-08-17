@@ -49,7 +49,7 @@
 
 <!-- New Comment Form -->
 <h3>New Comment</h3>
-<form class="mx-auto" action="/pets/<%= pet._id %>/imgs/comments" method="post">
+<form class="mx-auto" action="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments" method="post">
   <textarea name="text" rows="4" cols="30"></textarea>
   <button type="submit" name="button">Submit</button>
 </form>

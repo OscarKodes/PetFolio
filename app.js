@@ -69,7 +69,7 @@ mongoose.set("useCreateIndex", true);
 
 app.use("/pets", petRoutes);
 app.use("/pets/:id/imgs", imgRoutes);
-app.use("/pets/:id/imgs/comments", commentRoutes);
+app.use("/pets/:id/imgs/:img_id/comments", commentRoutes);
 app.use("/auth", authRoutes);
 app.use(indexRoutes);
 
