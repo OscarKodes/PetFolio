@@ -270,10 +270,23 @@ textarea.form-clean-wide {
 } */
 
 /* PET IMG SHOW PAGE */
+.top-dark-rectangle {
+  height: 7.5rem;
+  background-color: #222222;
+}
+
 .show-img-image {
   width: 100vw;
   height: 100vw;
   object-fit: cover;
+}
+
+.img-caption {
+  padding: 5rem 0;
+  margin-bottom: 4rem;
+  font-size: 4rem;
+  background-color: #222222;
+  color: white;
 }
 
 .new-comment-container {

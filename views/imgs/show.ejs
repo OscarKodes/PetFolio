@@ -33,11 +33,15 @@
     <div class="fixed-spacer">
     </div>
 
+<!-- Top dark rectangle -->
+<div class="top-dark-rectangle">
+</div>
 
 <!-- IMG LARGE -->
 <img class="show-img-image" src="<%= img.image %>" alt="">
 
-<p class="h2 text-center my-4"><%= img.caption %></p>
+<!-- CAPTION -->
+<p class="h2 text-center img-caption"><%= img.caption %></p>
 
 
 <!-- User buttons -->
@@ -72,29 +76,36 @@
 
 <!-- All Comments -->
 <div class="comment-card-container">
-  <% img.comments.forEach(function(comment, index){ %>
-    <div class="comment-card">
-      <p class="comment-by-line">
-        <span class="date-text"><%= comment.date.toDateString() %></span>
-        comment by
-        <a href="/user/<%= comment.user_id %>">
-          <%= comment.user_name %>
-        </a>
-      </p>
-      <p>
-        <%= comment.text %>
-      </p>
-
-      <!-- EDIT BUTTON -->
-      <% if (currUser && currUser._id.equals(comment.user_id)){ %>
-        <a class="btn btn-secondary"
-          href="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments/<%= index %>/edit">
-          Edit Comment
-        </a>
+  <% if (img.comments.length === 0) { %>
+    <p class="text-center">No comments yet.</p>
+      <% if (!currUser) { %>
+        <p class="text-center">Login to comment on posts!</p>
       <% } %>
-    </div>
+  <% } else { %>
+    <% img.comments.forEach(function(comment, index){ %>
+      <div class="comment-card">
+        <p class="comment-by-line">
+          <span class="date-text"><%= comment.date.toDateString() %></span>
+          comment by
+          <a href="/user/<%= comment.user_id %>">
+            <%= comment.user_name %>
+          </a>
+        </p>
+        <p>
+          <%= comment.text %>
+        </p>
 
-  <% }); %>
+        <!-- EDIT BUTTON -->
+        <% if (currUser && currUser._id.equals(comment.user_id)){ %>
+          <a class="btn btn-secondary"
+            href="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments/<%= index %>/edit">
+            Edit Comment
+          </a>
+        <% } %>
+      </div>
+
+    <% });%>
+  <% } %>
 </div>
 
 
