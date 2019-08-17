@@ -11,4 +11,10 @@
   <button type="submit" name="button">Submit</button>
 </form>
 
+<form class=""
+  action="/pets/<%= pet_id %>/imgs/<%= img_id %>/comments/<%= comment_idx %>?_method=DELETE"
+  method="post">
+  <button class="btn btn-danger" type="submit" name="button">Delete</button>
+</form>
+
 <%- include ../partials/footer %>
