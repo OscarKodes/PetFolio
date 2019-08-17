@@ -46,7 +46,7 @@
   <div class="d-flex flex-row flex-wrap pet-show-imgs-container justify-content-center">
       <% imgs.reverse().forEach(function(img){ %>
         <div class="pet-card">
-          <a href="/pets/<%= pet._id %>/imgs/<%= img._id %>">
+          <a class="text-decoration-none" href="/pets/<%= pet._id %>/imgs/<%= img._id %>">
             <img class="pet-card-img" src="<%= img.image %>" alt="">
             <p class="pet-card-text"><%= img.caption %></p>
           </a>

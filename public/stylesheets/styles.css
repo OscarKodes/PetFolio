@@ -301,7 +301,7 @@ textarea.form-clean-wide {
 .comment-card {
   text-align: center;
   padding-bottom: 4rem;
-  margin: 0 6rem;
+  margin: 0 3rem;
   box-shadow: 0 .5rem 1rem 0 #222222;
 }
 
@@ -330,6 +330,10 @@ textarea.form-clean-wide {
 
 .comment-by-line a:hover {
   color: gold;
+}
+
+.comment-card-text {
+  padding: 1rem 2rem;
 }
 
 /* USER PROFILE PAGE =========================== */
