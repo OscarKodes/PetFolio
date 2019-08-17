@@ -21,6 +21,7 @@ findOrCreate  = require("mongoose-findorcreate");
 // REQUIRE ROUTE MODULE FILES
 const petRoutes = require("./routes/pet");
 const imgRoutes = require("./routes/img");
+const commentRoutes = require("./routes/comment");
 const indexRoutes = require("./routes/index");
 const authRoutes = require("./routes/auth");
 
@@ -68,6 +69,7 @@ mongoose.set("useCreateIndex", true);
 
 app.use("/pets", petRoutes);
 app.use("/pets/:id/imgs", imgRoutes);
+app.use("/pets/:id/imgs/comments", commentRoutes);
 app.use("/auth", authRoutes);
 app.use(indexRoutes);
 
