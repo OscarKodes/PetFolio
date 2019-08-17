@@ -66,12 +66,20 @@
 
 
 <!-- All Comments -->
-<% img.comments.forEach(function(comment){ %>
+<% img.comments.forEach(function(comment, index){ %>
   <p><%= comment.text %></p>
   <a href="/user/<%= comment.user_id %>">
     <p><%= comment.user_name %></p>
   </a>
   <p><%= comment.date.toDateString() %></p>
+
+  <% if (currUser && currUser._id.equals(comment.user_id)){ %>
+    <a class="btn btn-warning"
+      href="/pets/<%= pet._id %>/imgs/<%= img._id %>/comments/<%= index %>/edit">
+      Edit Comment
+    </a>
+  <% } %>
+
 <% }); %>
 
 

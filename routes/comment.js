@@ -22,7 +22,7 @@ router.post("/", function(req, res){
       console.log(err);
       res.redirect("back");
     } else {
-      foundImg.comments.unshift(req.body.comment);
+      foundImg.comments.push(req.body.comment);
       foundImg.save();
       res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
     }
@@ -33,8 +33,43 @@ router.post("/", function(req, res){
 //// No need for show comments route
 
 // Edit Route
+router.get("/:comment_idx/edit", function(req, res){
+
+  let idx = req.params.comment_idx;
+
+  Img.findById(req.params.img_id, function(err, foundImg){
+      if (err) {
+        console.log(err);
+        res.redirect("back");
+      } else {
+        let comment = foundImg.comments[idx];
+        res.render("comments/edit",
+        {
+          img_id: foundImg._id,
+          pet_id: req.params.id,
+          comment: comment,
+          comment_idx: idx
+        });
+      }
+  });
+});
 
 // Update Route
+router.put("/:comment_idx", function(req, res){
+
+  let idx = req.params.comment_idx;
+
+  Img.findById(req.params.img_id, function(err, foundImg){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      foundImg.comments[idx].text = req.body.text;
+      foundImg.save();
+      res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
+    }
+  })
+});
 
 // Destroy Route
 
