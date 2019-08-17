@@ -67,8 +67,12 @@ body {
   margin-top: 15rem;
 }
 
-.fixed-spacer {
+.fixed-spacer-top {
   height: 6.73rem;
+}
+
+.fixed-spacer-bottom {
+  height: 18rem;
 }
 
 @media only screen and (min-width: 1080px) {
