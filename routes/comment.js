@@ -20,10 +20,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundImg.comments.push(req.body.comment);
       foundImg.save();
+      req.flash("success", "Comment sucessfully added!")
       res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
     }
   });
@@ -40,6 +42,7 @@ router.get("/:comment_idx/edit", middleware.checkCommentOwnership, function(req,
   Img.findById(req.params.img_id, function(err, foundImg){
       if (err) {
         console.log(err);
+        req.flash("error", err.message);
         res.redirect("back");
       } else {
         let comment = foundImg.comments[idx];
@@ -62,10 +65,12 @@ router.put("/:comment_idx", middleware.checkCommentOwnership, function(req, res)
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundImg.comments[idx].text = req.body.text;
       foundImg.save();
+      req.flash("success", "Comment edits saved!");
       res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
     }
   })
@@ -80,10 +85,12 @@ router.delete("/:comment_idx", middleware.checkCommentOwnership, function(req, r
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundImg.comments.splice(idx, 1);
       foundImg.save();
+      req.flash("success", "Comment sucessfully deleted.");
       res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
     }
   })

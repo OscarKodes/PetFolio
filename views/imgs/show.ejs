@@ -30,12 +30,28 @@
     </nav>
 
     <!-- SPACER NEEDED BECAUSE OF FIXED TOP -->
-    <div class="fixed-spacer">
-    </div>
+    <!-- <div class="fixed-spacer-top">
+    </div> -->
 
-<!-- Top dark rectangle -->
-<div class="top-dark-rectangle">
-</div>
+
+<!-- FLash alert messages -->
+<% if (success && success.length) { %>
+  <div class="bg-dark img-page-alert">
+    <div class="alert alert-success mx-4 mb-0" role="alert">
+      <%= success %>
+    </div>
+  </div>
+<% } else if (error && error.length) { %>
+  <div class="container bg-dark">
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  </div>
+<% } else { %>
+  <!-- Top dark rectangle -->
+  <div class="top-dark-rectangle">
+  </div>
+<% } %>
 
 <!-- IMG LARGE -->
 <img class="show-img-image" src="<%= img.image %>" alt="">
