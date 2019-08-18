@@ -180,6 +180,15 @@ textarea.form-clean-wide {
   font-size: 3rem;
 }
 
+/* DELETE BUTTON POPUP */
+.delete-modal {
+  width: 30rem;
+  display: absolute;
+  top: 40vw;
+  left: 50vw;
+  transform: translateX(-15rem);
+}
+
 /* PET INDEX PAGE CLASSES */
 
 .btn-lg {
