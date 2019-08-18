@@ -16,6 +16,7 @@ middlewareObj.checkPetOwnership = function(req, res, next) {
     Pet.findById(req.params.id, function(err, foundPet){
       if (err) {
         console.log("THERE WAS AN ERROR:", err);
+        req.flash("error", err.message);
         res.redirect("back");
       } else {
 
@@ -43,6 +44,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
     Img.findById(req.params.img_id, function(err, foundImg){
       if (err) {
         console.log("THERE WAS AN ERROR:", err);
+        req.flash("error", err.message);
         res.redirect("back");
       } else {
 
