@@ -25,9 +25,11 @@ router.post("/register", function(req, res){
     function(err, user){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       passport.authenticate("local")(req, res, function(){
+        req.flash("success", "You have successfully registered! Welcome to Petfolio! ");
         res.redirect("/pets");
       });
     }
@@ -37,14 +39,17 @@ router.post("/register", function(req, res){
 // Process Login
 router.post("/login", passport.authenticate("local",
   {
-    successRedirect: "/pets",
-    failureRedirect: "/login"
+    successRedirect: "back",
+    successFlash: "Welcome! You successfully logged in!",
+    failureRedirect: "back",
+    failureFlash: true,
   }), function(req, res){
 });
 
 // logout
 router.get("/logout", function(req, res){
   req.logout();
+  req.flash("success", "You successfully logged out!");
   res.redirect("/pets");
 });
 
