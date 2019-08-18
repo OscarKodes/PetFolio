@@ -16,7 +16,8 @@ passportLocalMongoose = require("passport-local-mongoose"),
 GoogleStrategy = require("passport-google-oauth20").Strategy,
 FacebookStrategy = require("passport-facebook").Strategy,
 middleware    = require("./middleware"),
-findOrCreate  = require("mongoose-findorcreate");
+findOrCreate  = require("mongoose-findorcreate"),
+flash         = require("connect-flash");
 
 // REQUIRE ROUTE MODULE FILES
 const petRoutes = require("./routes/pet");
@@ -29,6 +30,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 app.use(session({
   secret: process.env.SECRET,
@@ -54,6 +56,8 @@ passport.deserializeUser(function(id, done) {
 // this is middleware function that will run in every route
 app.use(function(req, res, next){
   res.locals.currUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 });
 

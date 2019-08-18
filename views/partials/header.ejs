@@ -33,3 +33,16 @@
     <!-- SPACER NEEDED BECAUSE OF FIXED TOP -->
     <div class="fixed-spacer-top">
     </div>
+
+<!-- FLash alert messages -->
+<div class="container">
+  <% if (success && success.length) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+  <% } else if (error && error.length) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+</div>
