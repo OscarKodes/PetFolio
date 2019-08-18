@@ -46,8 +46,10 @@ router.get("/google",
 
 router.get("/google/petfolio", passport.authenticate("google",
   {
-    successRedirect: "/pets",
-    failureRedirect: "/pets"
+    successRedirect: "back",
+    successFlash: "Welcome! You successfully logged in!",
+    failureRedirect: "back",
+    failureFlash: true
   }), function(req, res){
 
   }
@@ -60,7 +62,9 @@ router.get("/facebook",
 router.get("/facebook/petfolio", passport.authenticate("facebook",
   {
     successRedirect: "/pets",
-    failureRedirect: "/pets"
+    successFlash: "Welcome! You successfully logged in!",
+    failureRedirect: "/pets",
+    failureFlash: true
   }), function(req, res){
 
   }
