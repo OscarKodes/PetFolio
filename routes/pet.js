@@ -14,6 +14,7 @@ router.get("/", function(req, res){
   Pet.find({}, function(err, foundPets){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("pets/index", {pets: foundPets});
@@ -35,6 +36,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
   User.findById(req.body.user_id, function(err, foundUser){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back")
     } else {
       petObj.user = req.body.user_id;
@@ -47,6 +49,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
           foundUser.save();
           console.log("New Pet Created.");
           console.log(foundUser);
+          req.flash("success", "New pet successfully added!");
           res.redirect("/pets");
         }
       });
@@ -63,6 +66,7 @@ router.get("/:id", function(req, res){
     exec(function(err, foundPet){
       if (err) {
         console.log(err);
+        req.flash("error", err.message);
         res.redirect("back");
       } else {
         res.render("pets/show",
@@ -80,6 +84,7 @@ router.get("/:id/edit", middleware.checkPetOwnership, function(req, res){
   Pet.findById(req.params.id, function(err, foundPet){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("pets/edit", {pet: foundPet});
@@ -96,8 +101,10 @@ router.put("/:id", middleware.checkPetOwnership, function(req, res){
     function(err, foundPet){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
+      req.flash("success", "Pet info successfully edited!");
       res.redirect("/pets/" + req.params.id);
     }
   });
@@ -109,10 +116,12 @@ router.delete("/:id", middleware.checkPetOwnership, function(req, res){
   Pet.findByIdAndDelete(req.params.id, function(err, deletedPet){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       console.log("Pet deleted");
       console.log(deletedPet);
+      req.flash("success", "Pet successfully deleted!");
       res.redirect("/pets");
     }
   })
