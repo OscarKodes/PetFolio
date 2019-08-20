@@ -171,11 +171,17 @@ body {
 
 @media screen and (max-width: 1079px) {
   /* For mobile and table sizes */
+  .front-text-container {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+  }
+
   .front-text-main {
-    display: block;
     font-size: 8rem;
-    font-weight: 700;
-    animation: moveInLeft 1s ease-out;
   }
 }
 
