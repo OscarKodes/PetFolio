@@ -46,15 +46,18 @@
       <div class="modal-body text-center">
         Are you sure?
       </div>
-      <div class="modal-footer text-center">
-        <form class="text-center"
-          action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=DELETE"
-          method="post">
-          <button type="button" class="btn btn-secondary mr-3 btn-lg" data-dismiss="modal">No, Cancel</button>
 
-          <button type="submit" class="btn btn-danger mr-2 ml-5 btn-lg">Yes, Delete</button>
+      <div class="mb-4">
+        <form class="" action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=DELETE"
+        method="post">
+          <div class="d-flex flex-row justify-content-around">
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">No, Cancel</button>
+
+            <button type="submit" class="btn btn-danger btn-lg">Yes, Delete</button>
+          </div>
         </form>
       </div>
+
     </div>
   </div>
 </div>
