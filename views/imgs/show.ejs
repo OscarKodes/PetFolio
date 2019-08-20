@@ -19,15 +19,22 @@
 
   <body>
 
-<!-- NAVBAR -->
-    <nav class="navbar navbar-light fixed-top">
-      <a class="nav-link h1 mt-2" href="/pets/<%= pet._id %>">
-        <i class="fas fa-caret-left mx-2"></i>
-        Back
-      </a>
+<!-- MASTER CONTAINER -->
+<div class="master-container">
 
-      <a class="navbar-brand navbar-brand-center" href="/pets">PetFolio</a>
-    </nav>
+  <!-- NAVBAR -->
+      <nav class="navbar navbar-light fixed-top">
+        <a class="navbar-brand" href="/pets">PetFolio</a>
+
+            <a class="nav-link ml-auto" href="/about">About</a>
+
+          <% if (currUser) { %>
+            <a class="nav-link" href="/logout">Logout</a>
+          <% } %>
+      </nav>
+
+<!-- SUB MASTER CONTAINER to container everything except the navbars -->
+<div class="sub-master-container">
 
     <!-- SPACER NEEDED BECAUSE OF FIXED TOP -->
     <!-- <div class="fixed-spacer-top">
