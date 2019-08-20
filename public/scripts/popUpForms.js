@@ -4,6 +4,9 @@ let loginBtn = document.querySelector("#login-btn");
 let loginForm = document.querySelector("#login-form");
 let closeBtn = document.querySelectorAll(".fa-window-close");
 
+let registerClick = document.querySelector("#register-click");
+let loginClick = document.querySelector("#login-click");
+
 registerBtn.addEventListener("click", function(){
   registerForm.classList.remove("d-none");
   loginForm.classList.add("d-none");
@@ -22,4 +25,12 @@ closeBtn[0].addEventListener("click", function(){
 
 closeBtn[1].addEventListener("click", function(){
   loginForm.classList.add("d-none");
+});
+
+registerClick.addEventListener("click", function(){
+  registerBtn.click();
+});
+
+loginClick.addEventListener("click", function(){
+  loginBtn.click();
 });

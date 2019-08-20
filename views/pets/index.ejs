@@ -6,8 +6,17 @@
   </h1>
 </header>
 
+
 <div class="text-center mb-4">
-  <a class="btn btn-outline-dark btn-lg" href="/pets/new">Submit New Pet</a>
+  <% if (currUser) { %>
+    <a class="btn btn-outline-dark btn-lg" href="/pets/new">Submit New Pet</a>
+  <% } else { %>
+    <p>
+      <a id="register-click" class="btn btn-outline-dark py-0" href="#">REGISTER</a>
+      or
+      <a id="login-click" class="btn btn-outline-dark py-0" href="#">LOGIN</a>
+      to submit your own pet!</p>
+  <% } %>
 </div>
 
 
