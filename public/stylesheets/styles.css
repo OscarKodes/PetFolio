@@ -6,9 +6,25 @@
   box-sizing: inherit;
 }
 
-html {
-  font-size: 62.5%;
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
+
+@media screen and (min-width: 1080px) {
+  /* For laptop and desktop sizes */
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  /* For mobile and table sizes */
+  html {
+    font-size: 120%;
+  }
+}
+
 
 body {
   font-family: "Lato", sans-serif;
@@ -16,6 +32,26 @@ body {
   font-size: 1.6rem;
   line-height: 1.7;
   box-sizing: border-box;
+  background-color: #222222;
+}
+
+/* MASTER CONTAINER and NAV RELATED ISSUES */
+.master-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  box-shadow: 0 1rem 1.5rem 0 #333333;
+  background-color: white;
+}
+
+.sub-master-container {
+  height: 100vh;
+  overflow: scroll;
+}
+
+.fixed-top,
+.fixed-bottom {
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 /* NAVBAR & Alert CLASSES */
@@ -175,7 +211,7 @@ textarea.form-clean-wide {
 
 .btn-xl {
   display: block;
-  width: 90vw;
+  width: 90%;
   margin: 2rem auto;
   font-size: 3rem;
 }
@@ -245,9 +281,23 @@ textarea.form-clean-wide {
 
 .pet-card-img {
   width: 100%;
-  height: 20rem;
   object-fit: cover;
 }
+
+@media screen and (min-width: 1080px) {
+  /* For laptop and desktop sizes */
+  .pet-card-img {
+    height: 25rem;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  /* For mobile and tablet sizes */
+  .pet-card-img {
+    height: 15rem;
+  }
+}
+
 
 /* PET SHOW PAGE CLASSES */
 .pet-show-container {
@@ -268,7 +318,15 @@ textarea.form-clean-wide {
 }
 
 .pet-show-name {
-  font-size: 5rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 1080px) {
+  /* For laptop and desktop sizes */
+  .pet-show-name {
+    font-size: 5rem;
+  }
 }
 
 .pet-show-avatar {
@@ -305,6 +363,22 @@ textarea.form-clean-wide {
   font-size: 4rem;
   background-color: #222222;
   color: white;
+}
+
+@media screen and (min-width: 1080px) {
+  /* For laptop and desktop sizes */
+  .show-img-image {
+    width: 800px;
+    height: 800px;
+    box-sizing: content-box;
+    padding: 0 140px;
+  }
+
+  .top-dark-rectangle,
+  .img-caption,
+  .show-img-image {
+    background-color: #101010;
+  }
 }
 
 .new-comment-container {
@@ -356,10 +430,19 @@ textarea.form-clean-wide {
 
 /* USER PROFILE PAGE =========================== */
 .pet-long-card {
+  max-width: 85rem;
+  max-height: 20rem;
   margin: 2rem 2rem 0 2rem;
   background-color: #222222;
   border-radius: 2rem;
   box-shadow: 0 .5rem 1rem 0 #222222
+}
+
+@media screen and (min-width: 1080px) {
+  /* For laptop and desktop sizes */
+  .pet-long-card {
+    margin: 2rem auto;
+  }
 }
 
 .pet-long-card:hover {
@@ -368,8 +451,10 @@ textarea.form-clean-wide {
 }
 
 .pet-long-img {
-  width: 33vw;
-  height: 33vw;
+  width: 25vw;
+  max-width: 20rem;
+  height: 25vw;
+  max-height: 20rem;
   object-fit: cover;
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
@@ -377,7 +462,7 @@ textarea.form-clean-wide {
 
 .pet-big-name {
   color: white;
-  font-size: 5rem;
+  font-size: 3.8rem;
   margin: auto;
   padding: 0 2rem;
   text-overflow: ellipsis;
