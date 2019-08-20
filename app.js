@@ -62,8 +62,11 @@ app.use(function(req, res, next){
 });
 
 
-mongoose.connect('mongodb://localhost:27017/petfolio',
+const url = process.env.DATABASEURL || "mongodb://localhost:27017/petfolio";
+
+mongoose.connect(url,
 {useNewUrlParser: true, useFindAndModify: false});
+
 mongoose.set("useCreateIndex", true);
 
 
@@ -77,6 +80,8 @@ app.use("/pets/:id/imgs/:img_id/comments", commentRoutes);
 app.use("/auth", authRoutes);
 app.use(indexRoutes);
 
-app.listen(3000, function(){
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function(){
   console.log("Server is now running on port 3000.");
 });
