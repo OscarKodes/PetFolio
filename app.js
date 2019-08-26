@@ -17,7 +17,15 @@ GoogleStrategy = require("passport-google-oauth20").Strategy,
 FacebookStrategy = require("passport-facebook").Strategy,
 middleware    = require("./middleware"),
 findOrCreate  = require("mongoose-findorcreate"),
-flash         = require("connect-flash");
+flash         = require("connect-flash"),
+ImgurStorage  = require("@trevorblades/multer-storage-imgur"),
+multer        = require("multer");
+
+const upload = multer({
+  storage: ImgurStorage({
+    clientId: process.eng.IMGUR_CLIENT_ID
+  })
+});
 
 // REQUIRE ROUTE MODULE FILES
 const petRoutes = require("./routes/pet");
