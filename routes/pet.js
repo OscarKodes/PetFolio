@@ -3,7 +3,15 @@ const express       = require("express"),
       middleware    = require("../middleware"),
       Pet        = require("../models/pet"),
       Img        = require("../models/img"),
-      User          = require("../models/user");
+      User          = require("../models/user"),
+      ImgurStorage  = require("@trevorblades/multer-storage-imgur"),
+      multer        = require("multer");
+
+const upload = multer({
+  storage: ImgurStorage({
+    clientId: process.env.IMGUR_CLIENT_ID
+  })
+});
 
 
 // PET RESTFUL ROUTES=====================================
@@ -29,9 +37,11 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 });
 
 // CREATE ROUTE
-router.post("/", middleware.isLoggedIn, function(req, res){
+// router.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", upload.single("avatar"), function(req, res){
 
   let petObj = req.body.pet;
+  petObj.avatar = req.file.data.link;
 
   User.findById(req.body.user_id, function(err, foundUser){
     if (err) {

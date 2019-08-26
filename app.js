@@ -23,7 +23,7 @@ multer        = require("multer");
 
 const upload = multer({
   storage: ImgurStorage({
-    clientId: process.eng.IMGUR_CLIENT_ID
+    clientId: process.env.IMGUR_CLIENT_ID
   })
 });
 

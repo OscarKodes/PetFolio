@@ -2,9 +2,10 @@
 
 <h1 class="display-1 text-center">New Pet</h1>
 
-<form class="" action="/pets" method="post">
+<form class="" action="/pets" method="post"
+  enctype="multipart/form-data">
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[name]" value="" placeholder="Pet's Name" required>
-  <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[avatar]" value="" placeholder="Avatar: Paste Image URL" required>
+  <input class="form-control form-control-lg form-clean-wide" type="file" name="avatar" value="" placeholder="Pet Avatar Image" required>
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[gender]" value="" placeholder="Gender">
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[species]" value="" placeholder="Species i.e. cat, dog, rabbit">
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[breed]" value="" placeholder="Breed i.e. dalmatian, ragdoll">
