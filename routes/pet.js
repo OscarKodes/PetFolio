@@ -37,8 +37,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 });
 
 // CREATE ROUTE
-// router.post("/", middleware.isLoggedIn, function(req, res){
-router.post("/", upload.single("avatar"), function(req, res){
+router.post("/", middleware.isLoggedIn, upload.single("avatar"), function(req, res){
 
   let petObj = req.body.pet;
   petObj.avatar = req.file.data.link;
@@ -134,8 +133,7 @@ router.get("/:id/editAvatar", middleware.checkPetOwnership, function(req, res){
 });
 
 // UPDATE AVATAR ROUTE
-// router.put("/:id", middleware.checkPetOwnership, function(req, res){
-router.put("/:id/avatar", upload.single("avatar"), function(req, res){
+router.put("/:id/avatar", middleware.checkPetOwnership, upload.single("avatar"), function(req, res){
 
   Pet.findById(req.params.id, function(err, foundPet){
     if (err) {

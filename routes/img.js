@@ -31,8 +31,7 @@ router.get("/new", middleware.checkPetOwnership, function(req, res){
 });
 
 // CREATE ROUTE
-// router.post("/", middleware.checkPetOwnership, function(req, res){
-router.post("/", upload.single("image"), function(req, res){
+router.post("/", middleware.checkPetOwnership, upload.single("image"), function(req, res){
 
   let imgObj = {
     image: req.file.data.link,
@@ -129,8 +128,7 @@ router.get("/:img_id/edit-image", middleware.checkPetOwnership, function(req, re
 });
 
 // UPDATE IMAGE ROUTE
-// router.put("/:img_id", middleware.checkPetOwnership, function(req, res){
-router.put("/:img_id/edit-image", upload.single("image"), function(req, res){
+router.put("/:img_id/edit-image", middleware.checkPetOwnership, upload.single("image"), function(req, res){
 
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
