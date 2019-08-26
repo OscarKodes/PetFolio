@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+
+<h1 class="display-1 text-center">Edit Avatar</h1>
+
+<form class="" action="/pets/<%= pet._id %>/avatar?_method=PUT" method="post"
+  enctype="multipart/form-data">
+  <input class="form-control form-control-lg form-clean-wide" type="file" name="avatar" value="" placeholder="Upload New Avatar" required>
+  <input class="d-none" name="user_id" value="<%= currUser._id %>">
+  <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
+</form>
+
+<a class="btn btn-dark" href="/pets/<%= pet._id %>">Back to Pet</a>
+
+<% include ../partials/footer %>

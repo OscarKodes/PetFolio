@@ -4,7 +4,10 @@
 
 <form class="" action="/pets/<%= pet._id %>?_method=PUT" method="post">
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[name]" value="<%= pet.name %>" placeholder="Pet's Name" required>
-  <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[avatar]" value="<%= pet.avatar %>" placeholder="Avatar: Paste Image URL" required>
+
+  <!--
+    <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[avatar]" value="<%= pet.avatar %>" placeholder="Avatar: Paste Image URL" required>
+  -->
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[gender]" value="<%= pet.gender %>" placeholder="Gender">
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[species]" value="<%= pet.species %>" placeholder="Species i.e. cat, dog, rabbit">
   <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[breed]" value="<%= pet.breed %>" placeholder="Breed i.e. dalmatian, ragdoll">

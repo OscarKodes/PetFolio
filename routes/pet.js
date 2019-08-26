@@ -89,7 +89,7 @@ router.get("/:id", function(req, res){
     });
 });
 
-// EDIT ROUTE
+// EDIT INFO ROUTE
 router.get("/:id/edit", middleware.checkPetOwnership, function(req, res){
   Pet.findById(req.params.id, function(err, foundPet){
     if (err) {
@@ -102,7 +102,7 @@ router.get("/:id/edit", middleware.checkPetOwnership, function(req, res){
   });
 });
 
-// UPDATE ROUTE
+// UPDATE INFO ROUTE
 router.put("/:id", middleware.checkPetOwnership, function(req, res){
 
   Pet.findByIdAndUpdate(
@@ -115,6 +115,37 @@ router.put("/:id", middleware.checkPetOwnership, function(req, res){
       res.redirect("back");
     } else {
       req.flash("success", "Pet info successfully edited!");
+      res.redirect("/pets/" + req.params.id);
+    }
+  });
+});
+
+// EDIT AVATAR ROUTE
+router.get("/:id/editAvatar", middleware.checkPetOwnership, function(req, res){
+  Pet.findById(req.params.id, function(err, foundPet){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      res.render("pets/editAvatar", {pet: foundPet});
+    }
+  });
+});
+
+// UPDATE AVATAR ROUTE
+// router.put("/:id", middleware.checkPetOwnership, function(req, res){
+router.put("/:id/avatar", upload.single("avatar"), function(req, res){
+
+  Pet.findById(req.params.id, function(err, foundPet){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      foundPet.avatar = req.file.data.link;
+      foundPet.save();
+      req.flash("success", "Pet avatar successfully changed!");
       res.redirect("/pets/" + req.params.id);
     }
   });
