@@ -70,7 +70,8 @@
 <!-- User buttons -->
 <% if (currUser && pet.user && pet.user._id.equals(currUser._id)) { %>
   <div class="text-center">
-    <a class="btn btn-secondary" href="/pets/<%= pet._id %>/imgs/<%= img._id %>/edit">EDIT IMAGE POST</a>
+    <a class="btn btn-secondary" href="/pets/<%= pet._id %>/imgs/<%= img._id %>/edit-image">CHANGE IMAGE</a>
+    <a class="btn btn-secondary" href="/pets/<%= pet._id %>/imgs/<%= img._id %>/edit">EDIT CAPTION</a>
   </div>
 <% } %>
 

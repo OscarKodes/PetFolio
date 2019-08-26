@@ -85,7 +85,7 @@ router.get("/:img_id", function(req, res){
   });
 });
 
-// EDIT ROUTE
+// EDIT CAPTION ROUTE
 router.get("/:img_id/edit", middleware.checkPetOwnership, function(req, res){
   Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
@@ -98,18 +98,48 @@ router.get("/:img_id/edit", middleware.checkPetOwnership, function(req, res){
   });
 });
 
-// UPDATE ROUTE
+// UPDATE CAPTION ROUTE
 router.put("/:img_id", middleware.checkPetOwnership, function(req, res){
 
-  Img.findByIdAndUpdate(
-    req.params.img_id,
-    req.body.img,
-    function(err, foundImg){
+  Img.findById(req.params.img_id, function(err, foundImg){
     if (err) {
       console.log(err);
       req.flash("error", err.message);
       res.redirect("back");
     } else {
+      foundImg.caption = req.body.caption;
+      foundImg.save();
+      req.flash("success", "Post successfully edited!");
+      res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
+    }
+  });
+});
+
+// EDIT IMAGE ROUTE
+router.get("/:img_id/edit-image", middleware.checkPetOwnership, function(req, res){
+  Img.findById(req.params.img_id, function(err, foundImg){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      res.render("imgs/edit-image", {img: foundImg, pet_id: req.params.id});
+    }
+  });
+});
+
+// UPDATE IMAGE ROUTE
+// router.put("/:img_id", middleware.checkPetOwnership, function(req, res){
+router.put("/:img_id/edit-image", upload.single("image"), function(req, res){
+
+  Img.findById(req.params.img_id, function(err, foundImg){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      foundImg.image = req.file.data.link;
+      foundImg.save();
       req.flash("success", "Post successfully edited!");
       res.redirect("/pets/" + req.params.id + "/imgs/" + req.params.img_id);
     }

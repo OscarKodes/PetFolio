@@ -5,9 +5,7 @@
 <form class=""
   action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=PUT"
   method="post">
-  <input class="form-control form-control-lg form-clean-wide"
-  type="text" name="img[image]" value="<%= img.image %>" placeholder="Paste Image URL" required>
-  <textarea class="form-control form-control-lg form-clean-wide" name="img[caption]" required><%= img.caption %></textarea>
+  <textarea class="form-control form-control-lg form-clean-wide" name="caption" required><%= img.caption %></textarea>
   <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
 

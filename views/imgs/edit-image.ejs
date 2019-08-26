@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<h1 class="display-1 text-center form-title">Change Image</h1>
+
+<form class=""
+  action="/pets/<%= pet_id %>/imgs/<%= img._id %>/edit-image?_method=PUT"
+  method="post" enctype="multipart/form-data">
+  <input class="form-control form-control-lg form-clean-wide"
+  type="file" name="image" placeholder="Choose an Image" required>
+  <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
+</form>
+
+<div class="text-center">
+  <a class="nav-link" href="/pets/<%= pet_id %>/imgs/<%= img._id %>">Back to Image Post</a>
+</div>
+
+<div class="text-center">
+  <a class="nav-link" href="/pets/<%= pet_id %>">Back to Pet</a>
+</div>
+
+<% include ../partials/footer %>
