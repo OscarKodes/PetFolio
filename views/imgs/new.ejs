@@ -2,10 +2,11 @@
 
 <h1 class="display-1 text-center form-title">Add <%= pet.name %> Image</h1>
 
-<form class="" action="/pets/<%= pet._id %>/imgs" method="post">
+<form class="" action="/pets/<%= pet._id %>/imgs" method="post"
+  enctype="multipart/form-data">
   <input class="form-control form-control-lg form-clean-wide"
-  type="text" name="img[image]" placeholder="Paste Image URL" required>
-  <textarea class="form-control form-control-lg form-clean-wide" name="img[caption]" placeholder="Caption" required></textarea>
+  type="file" name="image" placeholder="Choose an Image" required>
+  <textarea class="form-control form-control-lg form-clean-wide" name="caption" placeholder="Caption" required></textarea>
   <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
 

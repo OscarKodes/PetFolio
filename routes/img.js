@@ -2,8 +2,15 @@ const express       = require("express"),
       router        = express.Router({mergeParams: true}),
       middleware    = require("../middleware"),
       Pet        = require("../models/pet"),
-      Img        = require("../models/img");
+      Img        = require("../models/img"),
+      ImgurStorage  = require("@trevorblades/multer-storage-imgur"),
+      multer        = require("multer");
 
+const upload = multer({
+  storage: ImgurStorage({
+    clientId: process.env.IMGUR_CLIENT_ID
+  })
+});
 
 // PET RESTFUL ROUTES=====================================
 
@@ -24,9 +31,15 @@ router.get("/new", middleware.checkPetOwnership, function(req, res){
 });
 
 // CREATE ROUTE
-router.post("/", middleware.checkPetOwnership, function(req, res){
+// router.post("/", middleware.checkPetOwnership, function(req, res){
+router.post("/", upload.single("image"), function(req, res){
 
-  Img.create(req.body.img, function(err, newImg){
+  let imgObj = {
+    image: req.file.data.link,
+    caption: req.body.caption
+  }
+
+  Img.create(imgObj, function(err, newImg){
     if (err) {
       console.log(err);
       req.flash("error", err.message);
