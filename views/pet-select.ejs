@@ -1,16 +1,27 @@
 <%- include partials/header %>
 
-<h1 class="display-1 text-center">Pet Selection</h1>
+<h1 class="display-3 text-center mt-5">Choose a Pet to Submit Image</h1>
 
-<% user.pets.reverse().forEach(function(pet){ %>
+<% if (user.pets.length === 0) { %>
+  <h2 class="text-center mt-5">You currently have no pets to add images to.</h2>
+  <div class="text-center">
+    <a class="btn btn-lg btn-outline-dark mt-5" href="/pets/new">
+      Click here to submit a pet!
+    </a>
+  </div>
 
-  <a class="text-decoration-none" href="/pets/<%= pet._id %>/imgs/new">
-    <div class="pet-selection-card">
-      <p><%= pet.name %></p>
-    </div>
-  </a>
+<% } else { %>
+  <% user.pets.reverse().forEach(function(pet){ %>
+
+    <a class="text-decoration-none" href="/pets/<%= pet._id %>/imgs/new">
+      <div class="pet-selection-card">
+        <p><%= pet.name %></p>
+      </div>
+    </a>
+
+  <% }); %>
+<% } %>
 
 
-<% }); %>
 
 <%- include partials/footer %>
