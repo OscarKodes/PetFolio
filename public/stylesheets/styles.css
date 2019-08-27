@@ -225,6 +225,10 @@ body {
   border-width: .1rem 0;
 }
 
+.form-clean-wide:nth-of-type(2) {
+  border-width: 0;
+}
+
 textarea.form-clean-wide {
   border-bottom-width: 0.1rem;
 }
@@ -233,7 +237,6 @@ textarea.form-clean-wide {
   width: 30rem;
   height: 12rem;
   margin: 0 auto;
-  border-width: 0;
 }
 
 .btn-xl {
