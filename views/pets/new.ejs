@@ -4,14 +4,18 @@
 
 <form class="" action="/pets" method="post"
   enctype="multipart/form-data">
-  <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[name]" value="" placeholder="Pet's Name" required>
-  <input class="form-control form-control-lg form-clean-wide" type="file" name="avatar" value="" placeholder="Pet Avatar Image" required>
-  <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[gender]" value="" placeholder="Gender">
-  <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[species]" value="" placeholder="Species i.e. cat, dog, rabbit">
-  <input class="form-control form-control-lg form-clean-wide" type="text" name="pet[breed]" value="" placeholder="Breed i.e. dalmatian, ragdoll">
-  <textarea class="form-control form-control-lg form-clean-wide" name="pet[info]" placeholder="Description"></textarea>
+  <input class="form-control form-clean-wide" type="text" name="pet[name]" value="" placeholder="Pet's Name" required>
+  <input class="form-control form-clean-wide upload-img-btn" type="file" name="avatar" value="" required>
+  <input class="form-control form-clean-wide" type="text" name="pet[gender]" value="" placeholder="Gender">
+  <input class="form-control form-clean-wide" type="text" name="pet[species]" value="" placeholder="Species i.e. cat, dog, rabbit">
+  <input class="form-control form-clean-wide" type="text" name="pet[breed]" value="" placeholder="Breed i.e. dalmatian, ragdoll">
+  <textarea class="form-control form-clean-wide" name="pet[info]" placeholder="Description"></textarea>
   <input class="d-none" name="user_id" value="<%= currUser._id %>">
   <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
+
+<div class="text-center">
+  <a class="btn btn-lg btn-outline-secondary mt-4" href="/pets">Back to Front</a>
+</div>
 
 <% include ../partials/footer %>

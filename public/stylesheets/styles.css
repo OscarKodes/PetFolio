@@ -221,8 +221,19 @@ body {
   font-weight: 300;
 }
 
+.form-clean-wide:first-of-type {
+  border-width: .1rem 0;
+}
+
 textarea.form-clean-wide {
   border-bottom-width: 0.1rem;
+}
+
+.upload-img-btn {
+  width: 30rem;
+  height: 12rem;
+  margin: 0 auto;
+  border-width: 0;
 }
 
 .btn-xl {
