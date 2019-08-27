@@ -5,17 +5,54 @@
 <form class=""
   action="/pets/<%= pet_id %>/imgs/<%= img._id %>/edit-image?_method=PUT"
   method="post" enctype="multipart/form-data">
-  <input class="form-control form-control-lg form-clean-wide"
+  <input class="form-control form-clean-wide upload-img-btn border-0"
   type="file" name="image" placeholder="Choose an Image" required>
   <button class="btn btn-dark btn-xl" type="submit" name="button">Submit</button>
 </form>
 
 <div class="text-center">
-  <a class="nav-link" href="/pets/<%= pet_id %>/imgs/<%= img._id %>">Back to Image Post</a>
+  <a class="btn btn-outline-secondary btn-lg" href="/pets/<%= pet_id %>/imgs/<%= img._id %>">Back to Image Post</a>
 </div>
 
-<div class="text-center">
-  <a class="nav-link" href="/pets/<%= pet_id %>">Back to Pet</a>
+<!-- Button trigger modal -->
+<div class="text-center mt-5">
+  <button type="button" class="btn btn-outline-danger btn-lg py-0"
+    data-toggle="modal" data-target="#deleteModal">
+    Delete Post
+  </button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade delete-modal" id="deleteModal" tabindex="-1" role="dialog"
+  aria-labelledby="deleteModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title text-center" id="deleteModal">
+          Delete Image Post
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        Are you sure?
+      </div>
+
+      <div class="mb-4">
+        <form class="" action="/pets/<%= pet_id %>/imgs/<%= img._id %>?_method=DELETE"
+        method="post">
+          <div class="d-flex flex-row justify-content-around">
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">No, Cancel</button>
+
+            <button type="submit" class="btn btn-danger btn-lg">Yes, Delete</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <% include ../partials/footer %>
